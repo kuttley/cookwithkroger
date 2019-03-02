@@ -46,19 +46,19 @@ CREATE TABLE recipe_category
     recipe_ID INT NOT NULL,
 
     CONSTRAINT pk_recipe_category PRIMARY KEY (category_ID, recipe_ID),
-    CONSTRAINT fk_recipe_category FOREIGN KEY (category_ID) REFERENCES category (category_ID),
-    CONSTRAINT fk_recipe_category FOREIGN KEY (recipte_ID) REFERENCES recipe (recipte_ID)
+    CONSTRAINT fk_category FOREIGN KEY (category_ID) REFERENCES category (category_ID),
+    CONSTRAINT fk_recipe FOREIGN KEY (recipe_ID) REFERENCES recipe (recipe_ID)
 );
 
 CREATE TABLE recipe_product
 (
-    recipte_ID INT NOT NULL,
+    recipe_ID INT NOT NULL,
     upc INT NOT NULL,
     quantity INT NOT NULL,
 
-    CONSTRAINT pk_recipe_product PRIMARY KEY (recipte_ID, upc),
-    CONSTRAINT fk_recipte_ID FOREIGN KEY (upc) REFERENCES product (upc),
-    CONSTRAINT fk_recipte_ID FOREIGN KEY (recipte_ID) REFERENCES recipe (recipte_ID)
+    CONSTRAINT pk_recipe_product PRIMARY KEY (recipe_ID, upc),
+    CONSTRAINT fk_product FOREIGN KEY (upc) REFERENCES product (upc),
+    CONSTRAINT fk_recipe FOREIGN KEY (recipe_ID) REFERENCES recipe (recipe_ID)
 );
 
 CREATE TABLE store
@@ -76,8 +76,8 @@ CREATE TABLE product_store
     product_price FLOAT NOT NULL,
 
     CONSTRAINT pk_product_store PRIMARY KEY (upc),
-    CONSTRAINT fk_product_store FOREIGN KEY (upc) REFERENCES product (upc),
-    CONSTRAINT fk_product_store FOREIGN KEY (store_ID) REFERENCES store (store_ID)
+    CONSTRAINT fk_product FOREIGN KEY (upc) REFERENCES product (upc),
+    CONSTRAINT fk_store FOREIGN KEY (store_ID) REFERENCES store (store_ID)
 );
 
 CREATE TABLE customer
@@ -97,23 +97,8 @@ CREATE TABLE products_bought_recently
     upc INT,
 
     CONSTRAINT pk_products_bought_recently PRIMARY KEY (customerId),
-    CONSTRAINT fk_products_bought_recently FOREIGN KEY (customerId) REFERENCES customer (customerId),
-    CONSTRAINT fk_products_bought_recently FOREIGN KEY (upc) REFERENCES product (upc)
+    CONSTRAINT fk_customer FOREIGN KEY (customerId) REFERENCES customer (customerId),
+    CONSTRAINT fk_product FOREIGN KEY (upc) REFERENCES product (upc)
 );
-
-
-
-INSERT INTO category (name)
-VALUES ('Vegetarian');
-
-INSERT INTO category (name)
-VALUES ('American');
-
-INSERT INTO category (name)
-VALUES ('Italian');
-
-
-
-
 
 COMMIT TRANSACTION;
