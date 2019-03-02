@@ -45,7 +45,9 @@ CREATE TABLE recipe_category
     category_ID INT NOT NULL,
     recipe_ID INT NOT NULL,
 
-    CONSTRAINT pk_recipe_category PRIMARY KEY (category_ID, recipe_ID)
+    CONSTRAINT pk_recipe_category PRIMARY KEY (category_ID, recipe_ID),
+    CONSTRAINT fk_recipe_category FOREIGN KEY (category_ID) REFERENCES category (category_ID),
+    CONSTRAINT fk_recipe_category FOREIGN KEY (recipte_ID) REFERENCES recipe (recipte_ID)
 );
 
 CREATE TABLE recipe_product
@@ -54,7 +56,9 @@ CREATE TABLE recipe_product
     upc INT NOT NULL,
     quantity INT NOT NULL,
 
-    CONSTRAINT pk_recipe_product PRIMARY KEY (recipte_ID, upc)
+    CONSTRAINT pk_recipe_product PRIMARY KEY (recipte_ID, upc),
+    CONSTRAINT fk_recipte_ID FOREIGN KEY (upc) REFERENCES product (upc),
+    CONSTRAINT fk_recipte_ID FOREIGN KEY (recipte_ID) REFERENCES recipe (recipte_ID)
 );
 
 CREATE TABLE store
@@ -67,11 +71,13 @@ CREATE TABLE store
 
 CREATE TABLE product_store
 (
-    product_ID SERIAL,
+    upc SERIAL,
     store_ID INT NOT NULL,
-    price FLOAT NOT NULL,
+    product_price FLOAT NOT NULL,
 
-    CONSTRAINT pk_product_store PRIMARY KEY (product_ID)
+    CONSTRAINT pk_product_store PRIMARY KEY (upc),
+    CONSTRAINT fk_product_store FOREIGN KEY (upc) REFERENCES product (upc),
+    CONSTRAINT fk_product_store FOREIGN KEY (store_ID) REFERENCES store (store_ID)
 );
 
 CREATE TABLE customer
@@ -90,7 +96,9 @@ CREATE TABLE products_bought_recently
     customerId INT NOT NULL,
     upc INT,
 
-    CONSTRAINT pk_products_bought_recently PRIMARY KEY (customerId)
+    CONSTRAINT pk_products_bought_recently PRIMARY KEY (customerId),
+    CONSTRAINT fk_products_bought_recently FOREIGN KEY (customerId) REFERENCES customer (customerId),
+    CONSTRAINT fk_products_bought_recently FOREIGN KEY (upc) REFERENCES product (upc)
 );
 
 
