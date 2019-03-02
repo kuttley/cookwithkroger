@@ -5,6 +5,8 @@ DROP TABLE IF EXISTS recipe_category;
 DROP TABLE IF EXISTS recipe_product;
 DROP TABLE IF EXISTS store;
 DROP TABLE IF EXISTS product_store;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS products_bought_recently;
 
 BEGIN TRANSACTION;
 
@@ -70,6 +72,25 @@ CREATE TABLE product_store
     price FLOAT NOT NULL,
 
     CONSTRAINT pk_product_store PRIMARY KEY (product_ID)
+);
+
+CREATE TABLE customer
+(
+    customerId SERIAL,
+    userName VARCHAR(64) NOT NULL,
+    firstName VARCHAR(64) NOT NULL,
+    lastName VARCHAR(64) NOT NULL,
+    password VARCHAR(64) NOT NULL,
+
+    CONSTRAINT pk_customer PRIMARY KEY (customerId)
+);
+
+CREATE TABLE products_bought_recently
+(
+    customerId INT NOT NULL,
+    upc INT,
+
+    CONSTRAINT pk_products_bought_recently PRIMARY KEY (customerId)
 );
 
 
