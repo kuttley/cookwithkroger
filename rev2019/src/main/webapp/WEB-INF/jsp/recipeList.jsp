@@ -50,7 +50,7 @@
 									<div class="card-body">
 										<a href="${recipePage}" class="d-flex text-center">${recipe.description}</a>
 										<div class="card-text mt-auto d-flex justify-content-between">
-											<p>$${recipe.price}</p>
+											<p>$${recipe.price * servings}</p>
 											<p>${recipe.cookTime} m <i class="far fa-clock"></i>
 											</p>
 										</div>
