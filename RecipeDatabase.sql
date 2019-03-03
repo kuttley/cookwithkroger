@@ -13,7 +13,7 @@ BEGIN TRANSACTION;
 CREATE TABLE product
 (
     upc SERIAL,
-    prouduct_description VARCHAR(128) NOT NULL,
+    product_description VARCHAR(128) NOT NULL,
     commodity VARCHAR(64) NOT NULL,
     brand VARCHAR(64) NOT NULL,
     product_size INT NOT NULL,
