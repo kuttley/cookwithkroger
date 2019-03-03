@@ -1,6 +1,7 @@
 package com.cookwithkroger.rev2019;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -73,13 +74,15 @@ public class SiteController {
 	@RequestMapping("/cart")
 	public String displayCart(HttpServletRequest request) {
 		String[] ingredients = request.getParameterValues("ingredient");
-		List<Product> ingredientList = new ArrayList<>();
-		for (String i : ingredients) {
-			ingredientList.add(productDao.getByUPC(Integer.parseInt(i)));
+		String[] qty = request.getParameterValues("qty");
+		Map<Product, Integer> ingredientList = new HashMap<>();
+		for (int i = 0; i < ingredients.length; i++) {
+			ingredientList.put(productDao.getByUPC(Integer.parseInt(ingredients[i])), Integer.parseInt(qty[i]));
 		}
 		cartDao.emptyCart(1);
-		cartDao.addItemsToCart(ingredientList, 1);
+		cartDao.addItemsToCart(new ArrayList<>(ingredientList.keySet()), 1);
 		request.setAttribute("ingredients", cartDao.getAllProductsInCart(1));
+		request.setAttribute("qty", ingredientList);
 		return "cart";
 	}
 	
