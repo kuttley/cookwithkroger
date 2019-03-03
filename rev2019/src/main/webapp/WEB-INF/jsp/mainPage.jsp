@@ -17,7 +17,8 @@
 		<c:url value="css/AboutUs5.png" var="aboutus" />
 
 		<img src="${logourl}" id="logo" />
-		<img src="${aboutus}" id="aboutus" />
+		<c:url value="/aboutUs" var="aboutusLink" />
+		<a href = "${aboutusLink}"><img src="${aboutus}" id="aboutus" /></a>
 	
 
 	</header>

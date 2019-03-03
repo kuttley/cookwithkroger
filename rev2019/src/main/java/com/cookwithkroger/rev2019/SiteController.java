@@ -60,4 +60,9 @@ public class SiteController {
 		request.setAttribute("recipe", recipeDao.getById(Integer.parseInt(recipeId)));
 		return "recipeDetail";
 	}
+	
+	@RequestMapping("/aboutUs")
+	public String displayAboutUs() {
+		return "aboutUs";
+	}
 }
