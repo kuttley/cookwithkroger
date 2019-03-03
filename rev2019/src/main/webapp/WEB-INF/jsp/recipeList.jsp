@@ -42,21 +42,19 @@
 							<c:url var="recipePage"
 								value="/recipeDetail?recipeId=${recipe.recipeId}" />
 							<div class="card card-outline-info h-100" style="width: 14.5rem;">
-								<div class="card-block">
 									<c:url var="recipeImage" value="${recipe.recipeImage}" />
 									<div class="card-title">
 										<a href="${recipePage}"> <img src="${recipeImage}" class="card-img-top" alt="recipeimage">
 										</a>
 									</div>
 
-									<div class="card-body">
-										<a href="${recipePage}" class="d-flex text-center">${recipe.description}</a>
-										<div class="card-text mt-auto d-flex justify-content-between">
+									<div class="card-body d-flex flex-column justify-content-end">
+										<a href="${recipePage}" class="d-flex text-center justify-content-center">${recipe.description}</a>
+										<div class="card-text d-flex justify-content-between">
 											<p>$${recipe.price * servings}</p>
 											<p>${recipe.cookTime} m <i class="far fa-clock"></i>
 											</p>
 										</div>
-									</div>
 								</div>
 							</div>
 						</div>
