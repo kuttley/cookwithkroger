@@ -71,7 +71,7 @@ public class CustomerJDBCDao implements CustomerDao {
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getItemUPCsFromPantry, pantry_ID);
 		
 		List<Integer> resultsList = new ArrayList<Integer>();
-		if (result.next()) {
+		while (result.next()) {
 			resultsList.add(result.getInt("upc"));
 		}
 		
