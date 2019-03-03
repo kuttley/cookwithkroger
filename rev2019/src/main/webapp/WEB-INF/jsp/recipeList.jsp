@@ -23,31 +23,38 @@
 </head>
 <body>
 	<header>
-	<c:url value="css/RecipesTitle.png" var="recipesTitle" />
+		<c:url value="css/RecipesTitle.png" var="recipesTitle" />
 
-		<h1><img src="${recipesTitle}" id="recipesTitle" /></h1>
+		<h1>
+			<img src="${recipesTitle}" id="recipesTitle" />
+		</h1>
 	</header>
 
 	<section id="main-content">
 		<div class="container" id="row3">
 
-			<div class="row" id="row2">
-				<div class="card-deck">
+			<div class="row justify-content-center" id="row2">
+				<div class="card-deck mb-5">
 					<c:forEach var="recipe" items="${recipes}">
-						<div class="col-sm-3 col-md-3 pb-2"  id="row1">
+						<div class="col-auto col-auto pb-2" id="row1">
 							<c:url var="recipePage"
 								value="/recipeDetail?recipeId=${recipe.recipeId}" />
-							<div class="card card-outline-info">
+							<div class="card card-outline-info h-100" style="width: 14.5rem;">
 								<div class="card-block">
 									<c:url var="recipeImage" value="${recipe.recipeImage}" />
 									<div class="card-title">
 										<a href="${recipePage}"> <img src="${recipeImage}" class="card-img-top" alt="recipeimage">
 										</a>
 									</div>
-									<a href="${recipePage}">${recipe.description}</a>
 
-									<p class="card-text">${recipe.cookTime} m <i class="far fa-clock"></i>
-									</p>
+									<div class="card-body">
+										<a href="${recipePage}" class="d-flex text-center">${recipe.description}</a>
+										<div class="card-text mt-auto d-flex justify-content-between">
+											<p>$${recipe.price * servings}</p>
+											<p>${recipe.cookTime} m <i class="far fa-clock"></i>
+											</p>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -56,7 +63,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<%-- 
 	
 	

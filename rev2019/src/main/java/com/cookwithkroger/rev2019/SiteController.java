@@ -49,7 +49,7 @@ public class SiteController {
 									ModelMap modelHolder,
 									HttpServletRequest request) {
 		currentRecipes = recipeDao.getRecipeThatMeetSearch(Double.parseDouble(budget), category, Integer.parseInt(cooktime), Integer.parseInt(servings));
-
+		modelHolder.put("servings", servings);
 		modelHolder.put("recipes", currentRecipes);
 		return "recipeList";
 	}
