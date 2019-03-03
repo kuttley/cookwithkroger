@@ -2,16 +2,23 @@
 
 <!DOCTYPE html>
 <html>
-	<meta name="viewport" content="width=device-width" />
-    <title>About Us</title>
-    <link rel="stylesheet" href="css/aboutUs.css" />
-	
-	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<title>About Us</title>
+<link rel="stylesheet" href="css/aboutUs.css" />
+
+<link href="https://fonts.googleapis.com/css?family=Pacifico"
+	rel="stylesheet">
+
 <style>
 h1 {
-font-family: 'Pacifico';font-size: 30px;
+	font-family: 'Pacifico';
+	font-size: 27px;
 }
+
 </style>
+
+</head>
 
 <body>
 
@@ -21,11 +28,6 @@ font-family: 'Pacifico';font-size: 30px;
 		<c:url value="css/AboutUs5.png" var="aboutUs" />
 		<c:url value="css/techElevatorLogo.png" var="techElevator" />
 		
-		<c:url value="https://www.linkedin.com/in/bkma/" var="brettALink" />
-		<c:url value="https://www.linkedin.com/in/kaliuttley/" var="kaliLink" />
-		<c:url value="https://www.linkedin.com/in/quinn-hebert/" var="quinnLink" />
-		<c:url value="http://www.linkedin.com/in/brettbauereis" var="brettBLink" />
-
 		<c:url value="/" var="mainPageLink" />
 		<a href = "${mainPageLink}"><img src="${logourl}" id="logo" /></a>
 		<img src="${aboutUs}" id="aboutUs" />
@@ -40,27 +42,35 @@ font-family: 'Pacifico';font-size: 30px;
 			<tr>
 
 				<td>
+				<c:url value="css/BrettB.png" var="brettBPic" />
+				<c:url value="http://www.linkedin.com/in/brettbauereis" var="brettBLink" />
 					<h1>Brett Bauereis</h1>
-					<p class="personImage"><a href = "${brettBLink}"><img src="https://i.postimg.cc/5tgz0w9d/brettB.jpg" id="brettB"/></a></p>
+					<p class="personImage"><a href = "${brettBLink}"><img src="${brettBPic}" id="brettB"/></a></p>
 					<div class ="abt">I like to build cool things.</div>
 
 				</td>
 				<td>
+				<c:url value="https://www.linkedin.com/in/kaliuttley/" var="kaliLink" />
+				<c:url value="css/kali.png" var="kaliPic" />
 					<h1>Kali Uttley</h1>
-					<p class="personImage"><a href = "${kaliLink}"><img src="https://i.postimg.cc/SRR1V6Nc/kali.jpg" id="kali"/></a><p>
+					<p class="personImage"><a href = "${kaliLink}"><img src="${kaliPic }" id="kali"/></a><p>
 					<div class ="abt">I'm sleepy.</div>
 				</td>
 
 			</tr>
 			<tr>
 				<td>
+				<c:url value="css/BrettA.png" var="brettAPic" />
+				<c:url value="https://www.linkedin.com/in/bkma/" var="brettALink" />
 					<h1>Brett Anderson</h1>
-					<p class="personImage"><a href = "${brettALink}"><img src="https://i.postimg.cc/fWBdZ72x/brettA.jpg" id="brettA" /></a></p>
+					<p class="personImage"><a href = "${brettALink}"><img src="${brettAPic }" id="brettA" /></a></p>
 					<div class ="abt">I code so I can afford shoes and tattoos.</div>
 				</td>
 				<td>
+				<c:url value="https://www.linkedin.com/in/quinn-hebert/" var="quinnLink" />
+				<c:url value="css/Quinn.png" var="quinnPic" />
 					<h1>Quinn Hebert</h1>
-					<p class="personImage"><a href = "${quinnLink}"><img src="https://i.postimg.cc/44jYJJk1/quinn.jpg" id="quinn" /></a></p>
+					<p class="personImage"><a href = "${quinnLink}"><img src="${quinnPic }" id="quinn" /></a></p>
 					<div class ="abt">I went to THE Ohio State University.</div>
 				</td>
 			</tr>
@@ -70,12 +80,13 @@ font-family: 'Pacifico';font-size: 30px;
 				<h1>The Group</h1>
 			<img src="${techElevator}" id="techElevator" />
 				
-					<p id="group">We are all currently students in the Tech Elevator 14
-						week coding bootcamp.</p></div>
+					<a id="group">We are all currently students in the Tech Elevator 14
+						week coding bootcamp.</a></div>
 
 
 		
 	</div>
+
 	
 	<div id="ourProject">
 	<h1>Our Project</h1>
@@ -88,11 +99,6 @@ font-family: 'Pacifico';font-size: 30px;
 		
 	</div>
 
-
-
 </body>
-
-
-
 
 </html>
