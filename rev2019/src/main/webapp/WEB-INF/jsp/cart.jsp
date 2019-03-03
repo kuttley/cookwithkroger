@@ -22,6 +22,13 @@
 	
 
 	</header>
+	
+	<table>
+		<tr>
+			<td><h1>Items in shopping cart: </h1></td>
+		</tr>
+	
+	</table>
 
 </body>
 </html>
