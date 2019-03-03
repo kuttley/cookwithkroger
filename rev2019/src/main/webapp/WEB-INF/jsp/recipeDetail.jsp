@@ -25,6 +25,14 @@ font-family: 'Pacifico';font-size: 14px;
 </head>
 
 <body>
+	<header>
+	<c:url value="css/CWKLogo5.png" var="logourl" />
+		<c:url value="css/AboutUs5.png" var="aboutus" />
+
+		<img src="${logourl}" id="logo" />
+		
+	</header>
+		
 	<div id="bodyInside">
 	<h1>${recipe.description}</h1>
 
@@ -32,10 +40,13 @@ font-family: 'Pacifico';font-size: 14px;
 		<p>${ recipe.instructions[ count ] }</p>
 	</c:forEach>
 	
+	
+	<c:if test="${not empty recipe.recipeVideo}">
 	<p id="videop">
 	
 	<iframe id="video" width="336" height="189" src="${recipe.recipeVideo}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>
 	</p>
+	</c:if>
 	
 	<div id="Ingredients">
 	
