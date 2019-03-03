@@ -12,6 +12,9 @@ public class Recipe {
 	private List<String> instructions;
 	private Map<Product, Integer> ingredients;
 	private int cookTime;
+	private double price;
+	private String recipe_image;
+	private String recipe_video;
 	
 	public Recipe() {
 	}
@@ -27,9 +30,33 @@ public class Recipe {
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getRecipeImage() {
+		return recipe_image;
+	}
+	
+	public void setRecipeImage(String recipe_image) {
+		this.recipe_image = recipe_image;
+	}
+	
+	public String getRecipeVideo() {
+		return recipe_video;
+	}
+	
+	public void setRecipeVideo(String recipe_video) {
+		this.recipe_video = recipe_video;
+	}
+	
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public String getDescription() {

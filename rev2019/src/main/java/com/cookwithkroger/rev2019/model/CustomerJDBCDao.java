@@ -1,5 +1,8 @@
 package com.cookwithkroger.rev2019.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,29 +22,31 @@ public class CustomerJDBCDao implements CustomerDao {
 	
 	@Override
 	public Customer getById(int customerId) {
-		String getCustomerByIdSql = "SELECT customerid, username, firstname, lastname, password FROM customer WHERE customerid = ?";
+		String getCustomerByIdSql = "SELECT customer_id, username, firstname, lastname, password, eamil_address FROM customer WHERE customer_id = ?";
 		
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getCustomerByIdSql, customerId);
 		
 		Customer c = null;
 		if (result.next()) {
-			c = createCustomer(result.getInt("customerid"),
+			c = createCustomer(result.getInt("customer_id"),
 						result.getString("username"),
 						result.getString("firstname"),
 						result.getString("lastname"),
-						result.getString("password"));
+						result.getString("password"),
+						result.getString("email_address"));
 		}
 		
 		return c;
 	}
 	
-	private Customer createCustomer(int customerId, String userName, String firstName, String lastName, String password) {
+	private Customer createCustomer(int customerId, String userName, String firstName, String lastName, String password, String email_address) {
 		Customer c = new Customer();
 		c.setCustomerId(customerId);
 		c.setUserName(userName);
 		c.setFirstName(firstName);
 		c.setLastName(lastName);
 		c.setPassword(password);
+		c.setEmail(email_address);
 		
 		return c;
 	}
