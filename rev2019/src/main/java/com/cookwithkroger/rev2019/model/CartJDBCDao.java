@@ -1,7 +1,10 @@
 package com.cookwithkroger.rev2019.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -43,15 +46,19 @@ public class CartJDBCDao implements CartDao{
 	
 	@Override
 	public void addItemsToCart(List<Product> listProducts, int cart_ID) {
+		Map<Product,Integer> map = new HashMap<Product,Integer>();
 		for (Product product: listProducts) {
-			String getQuantityOfProduct = "SELECT quantity FROM recipe_product WHERE upc = ?";
-			int quantity = 1;
-			SqlRowSet result = jdbcTemplate.queryForRowSet(getQuantityOfProduct, product.getProductUPC());
-			if (result.next()) {
-				quantity = result.getInt("quantity");
+			if (map.get(product) == null) {
+				map.put(product, 1);
+				String getQuantityOfProduct = "SELECT quantity FROM recipe_product WHERE upc = ?";
+				int quantity = 1;
+				SqlRowSet result = jdbcTemplate.queryForRowSet(getQuantityOfProduct, product.getProductUPC());
+				if (result.next()) {
+					quantity = result.getInt("quantity");
+				}
+				String addItemsToPantry = "INSERT INTO cart_products (cart_ID, upc, quantity) VALUES (?,?,?);";
+				jdbcTemplate.update(addItemsToPantry, cart_ID, product.getProductUPC(),quantity);
 			}
-			String addItemsToPantry = "INSERT INTO cart_products (cart_ID, upc, quantity) VALUES (?,?,?);";
-			jdbcTemplate.update(addItemsToPantry, cart_ID, product.getProductUPC(),quantity);
 		}
 	}
 	
