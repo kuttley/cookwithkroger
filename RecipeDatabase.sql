@@ -71,7 +71,7 @@ CREATE TABLE store
 
 CREATE TABLE product_store
 (
-    upc SERIAL,
+    upc INT NOT NULL,
     store_ID INT NOT NULL,
     product_price FLOAT NOT NULL,
 
