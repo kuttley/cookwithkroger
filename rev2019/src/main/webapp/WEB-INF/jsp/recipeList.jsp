@@ -28,23 +28,23 @@
 		<div class="container">
 			<div class="row">
 				<c:forEach var="recipe" items="${recipes}">
-					<c:url var="recipePage" value="/recipeDetail?recipeId=${recipe.recipeId}"/>
+					<c:url var="recipePage"
+						value="/recipeDetail?recipeId=${recipe.recipeId}" />
 					<div class="col-sm">
-						<div class="card mb-3 shadow p-3 bg-white rounded" style="max-width: 540px;">
-							<div class="row no-gutters">/
-									<c:url var="recipeImage" value="" />
+						<div class="card mb-3 shadow p-3 bg-white rounded"
+							style="max-width: 540px;">
+							<div class="row no-gutters">
+								<c:url var="recipeImage" value="" />
+								<a href="${recipePage}"> <img src="${recipeImage}" class="card-img-top alt="recipeimage">
+								</a>
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
 									<a href="${recipePage}">
-										<img src="${recipeImage}" class="card-img-top alt="recipeimage">
+										<h5 class="card-title">${recipe.description}</h5>
 									</a>
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-										<a href="${recipePage}">
-											<h5 class="card-title">${recipe.description}</h5>
-										</a>
-										<p class="card-text">${recipe.cookTime} m <i class="far fa-clock"></i>
-										</p>
-									</div>
+									<p class="card-text">${recipe.cookTime} m <i class="far fa-clock"></i>
+									</p>
 								</div>
 							</div>
 						</div>
