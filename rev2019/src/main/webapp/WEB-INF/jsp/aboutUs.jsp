@@ -18,12 +18,17 @@ font-family: 'Pacifico';font-size: 30px;
 	<header>
 
 		<c:url value="css/CWKLogo5.png" var="logourl" />
-		<c:url value="css/AboutUs5.png" var="aboutus" />
+		<c:url value="css/AboutUs5.png" var="aboutUs" />
 		<c:url value="css/techElevatorLogo.png" var="techElevator" />
+		
+		<c:url value="https://www.linkedin.com/in/bkma/" var="brettALink" />
+		<c:url value="https://www.linkedin.com/in/kaliuttley/" var="kaliLink" />
+		<c:url value="https://www.linkedin.com/in/quinn-hebert/" var="quinnLink" />
+		<c:url value="http://www.linkedin.com/in/brettbauereis" var="brettBLink" />
 
 		<c:url value="/" var="mainPageLink" />
 		<a href = "${mainPageLink}"><img src="${logourl}" id="logo" /></a>
-		<img src="${aboutus}" id="aboutus" />
+		<img src="${aboutUs}" id="aboutUs" />
 	
 
 	</header>
@@ -35,47 +40,46 @@ font-family: 'Pacifico';font-size: 30px;
 			<tr>
 
 				<td>
-
 					<h1>Brett Bauereis</h1>
-					<div>I like to build cool things.</div>
+					<p class="personImage"><a href = "${brettBLink}"><img src="https://i.postimg.cc/5tgz0w9d/brettB.jpg" id="brettB"/></a></p>
+					<div class ="abt">I like to build cool things.</div>
 
 				</td>
 				<td>
 					<h1>Kali Uttley</h1>
-					<div>I'm sleepy.</div>
+					<p class="personImage"><a href = "${kaliLink}"><img src="https://i.postimg.cc/SRR1V6Nc/kali.jpg" id="kali"/></a><p>
+					<div class ="abt">I'm sleepy.</div>
 				</td>
 
 			</tr>
 			<tr>
 				<td>
 					<h1>Brett Anderson</h1>
-					<div>I code so I can afford shoes and tattoos.</div>
+					<p class="personImage"><a href = "${brettALink}"><img src="https://i.postimg.cc/fWBdZ72x/brettA.jpg" id="brettA" /></a></p>
+					<div class ="abt">I code so I can afford shoes and tattoos.</div>
 				</td>
 				<td>
 					<h1>Quinn Hebert</h1>
-					<div>I went to THE Ohio State University.</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-				<h1>The Group</h1>
-				</td>
-			</tr>
-			<tr>
-				<td><img src="${techElevator}" id="techElevator" />
-				
-					<div>We are all currently students in the Tech Elevator 14
-						week coding bootcamp.</div>
-
+					<p class="personImage"><a href = "${quinnLink}"><img src="https://i.postimg.cc/44jYJJk1/quinn.jpg" id="quinn" /></a></p>
+					<div class ="abt">I went to THE Ohio State University.</div>
 				</td>
 			</tr>
 
 		</table>
+			<div id="theGroup">
+				<h1>The Group</h1>
+			<img src="${techElevator}" id="techElevator" />
+				
+					<p id="group">We are all currently students in the Tech Elevator 14
+						week coding bootcamp.</p></div>
+
+
+		
 	</div>
 	
 	<div id="ourProject">
 	<h1>Our Project</h1>
-		<div>CookWithKroger was made with convenience in mind. Customers will be able to search recipes within their budget from CookWithKroger.com while filtering recipes by price, category, and time to cook, and even number or servings, scaling the recipe to fit your needs. Once a recipe is selected, CookWithKroger will list all the ingredients needed ready to be added to the cart with one click. It will also provide resources to help with the preparation, including step by step instructions and even videos. We created the database using PostgreSQL, modeled after 84.51's data provided. The back-end was written in java and front-end was HTML, CSS, and some Bootstrap.</div>
+		<div>CookWithKroger was made with convenience in mind. Customers will be able to search recipes within their budget from CookWithKroger.com while filtering recipes by price, category, and time to cook, and even number or servings, scaling the recipe to fit your needs. Once a recipe is selected, CookWithKroger will list all the ingredients needed ready to be added to the cart with one click. It will also provide resources to help with the preparation, including step by step instructions and even videos. We created the database using PostgreSQL, modeled after 84.51's data provided. The back-end was written in java and front-end was HTML, CSS, and Bootstrap.</div>
 	</div>
 	
 	<div id="longTermVision">	
