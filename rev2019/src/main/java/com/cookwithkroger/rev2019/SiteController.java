@@ -29,9 +29,15 @@ public class SiteController {
 	@Autowired
 	private CustomerDao customerDao;
 	
+	private List<Recipe> currentRecipes;
+	
+	public SiteController() {
+		currentRecipes = new ArrayList<>();
+	}
+	
 	@RequestMapping("/")
 	public String displayMainPage() {
-		
+		currentRecipes.clear();
 		return "mainPage";
 	}
 	
@@ -42,12 +48,9 @@ public class SiteController {
 									@RequestParam String cooktime,
 									ModelMap modelHolder,
 									HttpServletRequest request) {
-		Recipe recipe = recipeDao.getById(1);
-		Recipe recipe2 = recipeDao.getById(2);
-		List<Recipe> recipes = new ArrayList<>();
-		recipes.add(recipe);
-		recipes.add(recipe2);
-		modelHolder.put("recipes", recipes);
+		currentRecipes = recipeDao.getRecipeInPriceRange(Double.parseDouble(budget));
+
+		modelHolder.put("recipes", currentRecipes);
 		return "recipeList";
 	}
 	
