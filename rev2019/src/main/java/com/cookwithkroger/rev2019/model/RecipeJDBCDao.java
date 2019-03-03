@@ -134,7 +134,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		List<Recipe> recipeInPriceList = new ArrayList<Recipe>();
 		
 		String getAllRecipes = "SELECT * FROM recipe WHERE recipe_price < ?";
-		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipes, price * numOfServings);
+		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipes, price / numOfServings);
 		while (result.next()) {
 			recipeInPriceList.add(createRecipe(result.getInt("recipe_id"), 
 					result.getString("name"),
@@ -219,10 +219,23 @@ public class RecipeJDBCDao implements RecipeDao {
 	@Override
 	public List<Recipe> getRecipeInCategory(String categoryName) {
 		
+		if (categoryName.equals("*")) {
+			return getAllRecipes();
+		}
+		
 		List<Recipe> recipeInCategory = new ArrayList<Recipe>();
 		
-		String getAllRecipeIDInCat = "SELECT recipe_ID FROM recipe_category WHERE category_ID = ?";
-		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipeIDInCat, categoryName);
+		String getCategoryID = "SELECT category_id FROM category"
+				+ " WHERE name = ?";
+		SqlRowSet resultCatID = jdbcTemplate.queryForRowSet(getCategoryID, categoryName);
+		int catID = 0;
+		if (resultCatID.next()) {
+			catID = resultCatID.getInt("category_id");
+		}
+		
+		String getAllRecipeIDInCat = "SELECT recipe_id FROM recipe_category"
+									+ " WHERE category_id = ?";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipeIDInCat, catID);
 		while (result.next()) {
 			recipeInCategory.add(getById(result.getInt("recipe_id")));
 		}
@@ -253,9 +266,9 @@ public class RecipeJDBCDao implements RecipeDao {
 		
 		for (Recipe r1: recipesInPriceRange) {
 			for (Recipe r2: recipesInCategory) {
-				if (r1 == r2) {
+				if (r1.getRecipeId() == r2.getRecipeId()) {
 					for (Recipe r3: recipesInTimeToCook) {
-						if (r1 == r3) {
+						if (r1.getRecipeId() == r3.getRecipeId()) {
 							resultRecipeList.add(r3);
 						}
 					}
@@ -276,9 +289,9 @@ public class RecipeJDBCDao implements RecipeDao {
 		
 		for (Recipe r1: recipesInPriceRange) {
 			for (Recipe r2: recipesInCategory) {
-				if (r1 == r2) {
+				if (r1.getRecipeId() == r2.getRecipeId()) {
 					for (Recipe r3: recipesInTimeToCook) {
-						if (r1 == r3) {
+						if (r1.getRecipeId() == r3.getRecipeId()) {
 							resultRecipeList.add(r3);
 						}
 					}
@@ -298,7 +311,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		
 		for (Recipe r1: recipesInPriceRange) {
 			for (Recipe r2: recipesInTimeToCook) {
-				if (r1 == r2) {
+				if (r1.getRecipeId() == r2.getRecipeId()) {
 					resultRecipeList.add(r2);
 				}
 			}
@@ -316,7 +329,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		
 		for (Recipe r1: recipesInPriceRange) {
 			for (Recipe r2: recipesInTimeToCook) {
-				if (r1 == r2) {
+				if (r1.getRecipeId() == r2.getRecipeId()) {
 					resultRecipeList.add(r2);
 				}
 			}
@@ -334,7 +347,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		
 		for (Recipe r1: recipesInPriceRange) {
 			for (Recipe r2: recipesInCategory) {
-				if (r1 == r2) {
+				if (r1.getRecipeId() == r2.getRecipeId()) {
 					resultRecipeList.add(r2);
 				}
 			}
@@ -352,7 +365,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		
 		for (Recipe r1: recipesInPriceRange) {
 			for (Recipe r2: recipesInCategory) {
-				if (r1 == r2) {
+				if (r1.getRecipeId() == r2.getRecipeId()) {
 					resultRecipeList.add(r2);
 				}
 			}

@@ -54,10 +54,10 @@
 						<%-- ADD for each loop to loop through each category in our database --%>
 
 						<option value="*">I Like It All!</option>
-						<option value="v">Vegetarian</option>
-						<option value="a">American</option>
-						<option value="i">Italian</option>
-						<option value="m">Mexican</option>
+						<option value="Vegetarian">Vegetarian</option>
+						<option value="American">American</option>
+						<option value="Italian">Italian</option>
+						<option value="Mexican">Mexican</option>
 
 					</select>
 				</p>
