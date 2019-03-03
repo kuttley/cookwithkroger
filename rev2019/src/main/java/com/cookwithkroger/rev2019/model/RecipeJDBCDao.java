@@ -1,6 +1,7 @@
 package com.cookwithkroger.rev2019.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +14,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class RecipeJDBCDao implements RecipeDao {
 	private JdbcTemplate jdbcTemplate;
+	private DataSource dataSrc;
 	
 	public RecipeJDBCDao(DataSource dataSource) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
+		dataSrc = dataSource;
 	}
 	
 	@Override
@@ -56,6 +59,19 @@ public class RecipeJDBCDao implements RecipeDao {
 			instructions.add(s);
 		}
 		r.setInstructions(instructions);
+		
+		Map<Product, Integer> ingredients = new HashMap<Product, Integer>();
+		
+		String getProductsForRecipe = "SELECT upc, quantity FROM recipe_product WHERE recipe_id = ?";
+
+		SqlRowSet result = jdbcTemplate.queryForRowSet(getProductsForRecipe, recipe_id);
+		
+		while (result.next()) {
+			ProductDao productJDBCDao = new ProductJDBCDao(dataSrc);
+			ingredients.put(productJDBCDao.getByUPC(result.getInt("upc")), result.getInt("quantity"));
+		}
+		
+		r.setIngredients(ingredients);
 		
 		return r;
 	}
