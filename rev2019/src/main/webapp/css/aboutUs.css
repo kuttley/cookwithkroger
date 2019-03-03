@@ -5,6 +5,8 @@ html {
 	background-size: cover;
 }
 
+
+
 header {
 	
 	height: 110px;
@@ -12,22 +14,21 @@ header {
 	
 }
 
-
 #aboutUs {
-	width: 18%;
+	width: 200px;
 	display: inline-block;
 	position: relative;
-  	left: 26.5%;
+  	margin-left: 30%;
   	bottom: 10px;
 	
 }
+
 .abt {
 	text-align: center;
 }
 
 #logo {
 	
-	width:15%;
 	margin-left: auto;
 	margin-right: auto;
 	
@@ -55,7 +56,7 @@ p {
 }
 
 #aboutUsInfo {
-	background-color: rgba(204, 204, 204, 0.7);
+	background-color: rgba(204, 204, 204, 0.9);
 	padding: 10px;
 	border-radius: 10px;
 	margin-bottom: 10px;
@@ -87,22 +88,18 @@ p {
 }
 
 #brettA {
-	width: 23%;
 	border-radius: 50%;
 }
 
 #brettB {
-	width: 23%;
 	border-radius: 50%;
 }
 
 #quinn {
-	width: 23%;
 	border-radius: 50%;
 }
 
 #kali {
-	width: 23%;
 	border-radius: 50%;
 }
 
@@ -114,7 +111,6 @@ tbody div {
 	margin: 10px;
 }
 
-
 table {
 	width: 75%;
 	margin-left: 12.5%;
@@ -123,3 +119,6 @@ table {
 #group {
 	color: black;
 }
+
+
+

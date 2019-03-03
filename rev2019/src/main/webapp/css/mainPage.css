@@ -5,6 +5,11 @@ html {
 	background-size: cover;
 }
 
+#welcome {
+	text-align: center;
+	color: white;
+}
+
 
 
 header {
@@ -119,5 +124,6 @@ header {
 	color: black;
 	font-size: 16px;
 	font-weight: bold;
+
 }
 

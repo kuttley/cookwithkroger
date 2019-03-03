@@ -5,9 +5,17 @@
 	<meta name="viewport" content="width=device-width" />
     <title>Cook With Kroger</title>
     <link rel="stylesheet" href="css/mainPage.css" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico"
+	rel="stylesheet">
+	<style>
+	#welcome {
+	font-family: 'Pacifico';
+	font-size: 17px;
 	
+	}
+	</style>
 
-
+	
 
 <body>
 
@@ -17,6 +25,8 @@
 		<c:url value="css/AboutUs5.png" var="aboutus" />
 
 		<img src="${logourl}" id="logo" />
+		<p id="welcome"> Welcome Back Tracy McGrady!</p>
+		
 		<c:url value="/aboutUs" var="aboutusLink" />
 		<a href = "${aboutusLink}"><img src="${aboutus}" id="aboutus" /></a>
 	

@@ -19,32 +19,33 @@ public class CartJDBCDao implements CartDao{
 	
 	@Override
 	public Cart getById(int cartId) {
-		String getCartByIdSql = "SELECT cart_id, customer_id FROM customer_cart WHERE cart_id = ?";
+		String getCartByIdSql = "SELECT cart_id, customer_id, quantity FROM customer_cart WHERE cart_id = ?";
 		
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getCartByIdSql, cartId);
 		
 		Cart cart = null;
 		if (result.next()) {
 			cart = createCart(result.getInt("cart_id"),
-						result.getInt("customer_id"));
+						result.getInt("customer_id"),
+						result.getInt("quantity"));
 		}
 		
 		return cart;
 	}
 	
-	private Cart createCart(int cartId, int customerId) {
+	private Cart createCart(int cartId, int customerId, int quantity) {
 		Cart cart = new Cart();
 		cart.setCartID(cartId);
 		cart.setCustomerID(customerId);
-		
+		cart.setQuantity(quantity);
 		return cart;
 	}
 	
 	@Override
-	public void addItemsToCart(List<Product> listProducts, int cart_ID) {
+	public void addItemsToCart(List<Product> listProducts, int cart_ID, int quantity) {
 		for (Product product: listProducts) {
-			String addItemsToPantry = "INSERT INTO cart_products (cart_ID, upc) VALUES (?,?);";
-			jdbcTemplate.update(addItemsToPantry, cart_ID, product.getProductUPC());
+			String addItemsToPantry = "INSERT INTO cart_products (cart_ID, upc, quantity) VALUES (?,?,?);";
+			jdbcTemplate.update(addItemsToPantry, cart_ID, product.getProductUPC(),quantity);
 		}
 	}
 	
