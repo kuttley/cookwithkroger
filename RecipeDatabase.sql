@@ -111,6 +111,6 @@ CREATE TABLE pantry_products
     CONSTRAINT pk_pantry_products PRIMARY KEY (pantry_ID, upc),
     CONSTRAINT fk_customer FOREIGN KEY (pantry_ID) REFERENCES customer_pantry (pantry_ID),
     CONSTRAINT fk_product FOREIGN KEY (upc) REFERENCES product (upc)
-)
+);
 
 COMMIT TRANSACTION;
