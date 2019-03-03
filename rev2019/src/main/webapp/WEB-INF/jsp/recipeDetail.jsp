@@ -21,6 +21,13 @@
 	
 	<h1>${recipe.description}</h1>
 	
+	<table>
+		<tr>
+			<td>Category: </td>
+			<td>${recipe.category}</td>
+		</tr>
+	</table>
+	
 	
 	
 	
