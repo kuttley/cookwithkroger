@@ -71,10 +71,12 @@ h1 {
 			<form method="GET" action="${cart}">
 
 				<c:forEach var="ingredient" items="${recipe.ingredients}">
-        			<fmt:setLocale value = "en_US"/>
-					<fmt:formatNumber var="ingPrice" value="${ingredient.key.price}" type="CURRENCY" pattern="$0.00" />
-					 
-					<input type="checkbox" name="ingredient" value="${ingredient.key.productUPC}" ${ingredient.key.checked}> ${ingredient.key.name} ${ingPrice}<br>
+					<input type="checkbox" name="ingredient" value="${ingredient.key.productUPC}" ${ingredient.key.checked} style="opacity:0; position:absolute; left:9999px;">
+					<c:forEach var="qty" begin="1" end="${ingredient.value}">
+	        			<fmt:setLocale value = "en_US"/>
+						<fmt:formatNumber var="ingPrice" value="${ingredient.key.price}" type="CURRENCY" pattern="$0.00" />
+						<input type="checkbox" ${ingredient.key.checked}> ${ingredient.key.name} ${ingPrice}<br>
+					</c:forEach>
 				</c:forEach>
 				<input type="submit" value="Add To Cart">
 			</form>
