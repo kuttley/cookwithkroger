@@ -49,6 +49,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		r.setPrice(recipe_price);
 		r.setRecipeImage(recipe_image);
 		r.setRecipeVideo(recipe_video);
+		r.setCookTime(time_to_cook);
 
 		List<String> instructions = new ArrayList<>();
 		for (String s : recipe_instructions.split("|")) {
