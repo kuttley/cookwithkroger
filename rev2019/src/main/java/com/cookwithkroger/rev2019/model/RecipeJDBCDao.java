@@ -136,7 +136,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		if (result.next()) {
 			return result.getInt("product_price");
 		}
-		return -1;
+		return 0;
 	}
 	
 	private List<Integer> getItemUPCFromPantry(int customerId) {
