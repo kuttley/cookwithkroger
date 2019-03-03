@@ -74,6 +74,21 @@ public class CartJDBCDao implements CartDao{
 		return productList;
 	}
 	
+	public Map<Product,Integer> getAllProductsWithQuantitiesInCart(int cart_ID) {
+		Map<Product,Integer> map = new HashMap<Product,Integer>();
+		List<Product> productList = getAllProductsInCart(cart_ID);
+		for (Product product: productList) {
+			String getQuantityOfProduct = "SELECT quantity FROM recipe_product WHERE upc = ?";
+			int quantity = 1;
+			SqlRowSet result = jdbcTemplate.queryForRowSet(getQuantityOfProduct, product.getProductUPC());
+			if (result.next()) {
+				quantity = result.getInt("quantity");
+			}
+			map.put(product, quantity);
+		}
+		return map;
+	}
+	
 	private Product getByUPC(int productUPC) {
 		String getProductByUPCSql = "SELECT upc, product_description, commodity, brand, product_size FROM product WHERE UPC = ?";
 		
