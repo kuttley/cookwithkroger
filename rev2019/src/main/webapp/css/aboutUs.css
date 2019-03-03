@@ -13,13 +13,16 @@ header {
 }
 
 
-#aboutus {
+#aboutUs {
 	width: 18%;
 	display: inline-block;
 	position: relative;
-  	left: 25.5%;
+  	left: 26.5%;
   	bottom: 10px;
 	
+}
+.abt {
+	text-align: center;
 }
 
 #logo {
@@ -31,11 +34,18 @@ header {
 }
 
 h1 {
+	text-align: center;
 	color: white;
+	margin: 10px;
+	font-size: 45px;
 }
 
 p {
 	color: white;
+}
+
+.personImage {
+	text-align: center;
 }
 
 
@@ -52,6 +62,7 @@ p {
 	color: #3A3A3A;
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 }
 
 #ourProject {
@@ -68,4 +79,47 @@ p {
 	border-radius: 10px;
 	margin-bottom: 10px;
 	text-align: center;
+}
+
+#theGroup {
+	text-align: center;
+	width: 100%;
+}
+
+#brettA {
+	width: 23%;
+	border-radius: 50%;
+}
+
+#brettB {
+	width: 23%;
+	border-radius: 50%;
+}
+
+#quinn {
+	width: 23%;
+	border-radius: 50%;
+}
+
+#kali {
+	width: 23%;
+	border-radius: 50%;
+}
+
+td {
+	width: 30%;
+}
+
+tbody div {
+	margin: 10px;
+}
+
+
+table {
+	width: 75%;
+	margin-left: 12.5%;
+}
+
+#group {
+	color: black;
 }
