@@ -12,14 +12,38 @@ header {
 	
 }
 
+body {
+	margin-left: 50px;
+	margin-right: 50px;
+	
+	background-color: transparent;
+}
+
+h1 {
+	font-family: 'Pacifico';
+	font-size: 40px;
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+	color: #3A3A3A;
+}
 
 #aboutus {
-	width: 18%;
 	display: inline-block;
 	position: fixed;
 	top: 10px;
-  	left: 41.5%;
-	
+  	right: 10px;
+	align-self: flex-end;
+}
+
+#bodyish  {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 90px;
+	width: 80%;
+	height: auto;
+	background-color: rgba(204, 204, 204, 0.85);
+	border-radius: 10px;
 }
 
 #logo {
