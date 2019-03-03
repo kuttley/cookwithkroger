@@ -77,31 +77,40 @@ CREATE TABLE product_store
     product_price FLOAT NOT NULL,
     product_kroger_plus_price FLOAT NOT NULL,
 
-    CONSTRAINT pk_product_store PRIMARY KEY (upc),
+    CONSTRAINT pk_product_store PRIMARY KEY (upc, store_ID),
     CONSTRAINT fk_product FOREIGN KEY (upc) REFERENCES product (upc),
     CONSTRAINT fk_store FOREIGN KEY (store_ID) REFERENCES store (store_ID)
 );
 
 CREATE TABLE customer
 (
-    customerId SERIAL,
+    customer_ID SERIAL,
     userName VARCHAR(64) NOT NULL,
     firstName VARCHAR(64) NOT NULL,
     lastName VARCHAR(64) NOT NULL,
     emailAddress VARCHAR(64),
     password VARCHAR(64) NOT NULL,
 
-    CONSTRAINT pk_customer PRIMARY KEY (customerId)
+    CONSTRAINT pk_customer PRIMARY KEY (customer_ID)
 );
 
-CREATE TABLE products_bought_recently
+CREATE TABLE customer_pantry
 (
-    customerId INT NOT NULL,
-    upc INT,
+    pantry_ID SERIAL,
+    customer_ID INT NOT NULL,
 
-    CONSTRAINT pk_products_bought_recently PRIMARY KEY (customerId),
-    CONSTRAINT fk_customer FOREIGN KEY (customerId) REFERENCES customer (customerId),
-    CONSTRAINT fk_product FOREIGN KEY (upc) REFERENCES product (upc)
+    CONSTRAINT pk_customer_pantry PRIMARY KEY (pantry_ID),
+    CONSTRAINT fk_customer FOREIGN KEY (customer_ID) REFERENCES customer (customer_ID)
 );
+
+CREATE TABLE pantry_products
+(
+    pantry_ID INT NOT NULL,
+    upc INT NOT NULL,
+
+    CONSTRAINT pk_pantry_products PRIMARY KEY (pantry_ID, upc),
+    CONSTRAINT fk_customer FOREIGN KEY (pantry_ID) REFERENCES customer_pantry (pantry_ID),
+    CONSTRAINT fk_product FOREIGN KEY (upc) REFERENCES product (upc)
+)
 
 COMMIT TRANSACTION;
