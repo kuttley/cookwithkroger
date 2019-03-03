@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -67,7 +68,10 @@ h1 {
 			<form method="GET" action="${cart}">
 
 				<c:forEach var="ingredient" items="${recipe.ingredients}">
-					<input type="checkbox" name="ingredient" value="${ingredient.key}" ${ingredient.key.checked}> ${ingredient.key.name}<br>
+        			<fmt:setLocale value = "en_US"/>
+					<fmt:formatNumber var="ingPrice" value="${ingredient.key.price}" type="CURRENCY" pattern="$0.00" />
+					 
+					<input type="checkbox" name="ingredient" value="${ingredient.key}" ${ingredient.key.checked}> ${ingredient.key.name} ${ingPrice}<br>
 				</c:forEach>
 				<input type="submit" value="Add To Cart">
 			</form>
