@@ -9,6 +9,7 @@ public class Product {
 	private String storeNum;
 	private double price;
 	private int productSize;
+	private String checked;
 	
 	public Product() {
 	}
@@ -81,5 +82,13 @@ public class Product {
 
 	public void setProductSize(int productSize) {
 		this.productSize = productSize;
+	}
+	
+	public String getChecked() {
+		return checked;
+	}
+	
+	public void setChecked(String checked) {
+		this.checked = checked;
 	}
 }
