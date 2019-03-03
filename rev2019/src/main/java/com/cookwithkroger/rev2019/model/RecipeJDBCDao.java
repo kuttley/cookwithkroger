@@ -30,7 +30,7 @@ public class RecipeJDBCDao implements RecipeDao {
 			r = createRecipe(result.getInt("recipe_id"), 
 					result.getString("name"),
 					result.getString("recipe_instructions"),
-					result.getString("recipe.description"),
+					result.getString("recipe_description"),
 					result.getInt("time_to_cook"),
 					result.getDouble("recipe_price"),
 					result.getString("recipe_video"),
