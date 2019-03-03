@@ -6,7 +6,7 @@
 <head>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Recipes</title>
+<title>Recipe Results</title>
 <link rel="stylesheet" href="css/recipeList.css" />
 
 <link rel="stylesheet"
@@ -22,16 +22,18 @@
 </head>
 <body>
 	<header>
-		<h1>Recipes Matching Your Search</h1>
+	<c:url value="css/RecipesTitle.png" var="recipesTitle" />
+
+		<h1><img src="${recipesTitle}" id="recipesTitle" /></h1>
 	</header>
 
 	<section id="main-content">
-		<div class="container">
+		<div class="container" id="row3">
 
-			<div class="row">
+			<div class="row" id="row2">
 				<div class="card-deck">
 					<c:forEach var="recipe" items="${recipes}">
-						<div class="col-sm-3 col-md-3 pb-2">
+						<div class="col-sm-3 col-md-3 pb-2"  id="row1">
 							<c:url var="recipePage"
 								value="/recipeDetail?recipeId=${recipe.recipeId}" />
 							<div class="card card-outline-info">
@@ -53,6 +55,61 @@
 			</div>
 		</div>
 	</section>
+	
+	<%-- 
+	
+	
+	
+	<table>
+		<tr>
+			<c:forEach var="recipe" items="${recipes}">
+				<td>
+					<c:url var="recipePage"
+						value="/recipeDetail?recipeId=${recipe.recipeId}" />
+			
+				
+			
+			
+			
+		
+		
+				</td>
+			</c:forEach>
+		<tr>
+	</table>
+	
+	
+	<section id="main-content">
+		<div class="container">
+
+			<div class="row">
+				<div class="card-deck">
+					<c:forEach var="recipe" items="${recipes}">
+						<div class="col-sm-3 col-md-3 pb-2">
+							<c:url var="recipePage"
+								value="/recipeDetail?recipeId=${recipe.recipeId}" />
+								
+							<div class="card card-outline-info">
+								<div class="card-block">
+									<c:url var="recipeImage" value="${recipe.recipeImage}" />
+									<div class="card-title">
+										<a href="${recipePage}"> <img src="${recipeImage}" class="card-img-top" alt="recipeimage">
+										</a>
+									</div>
+									<a href="${recipePage}">${recipe.description}</a>
+
+									<p class="card-text">${recipe.cookTime} m <i class="far fa-clock"></i>
+									</p>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	--%>
 
 
 

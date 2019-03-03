@@ -4,3 +4,32 @@ html {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+#main-content {
+	 
+	 background-color: transparent;
+
+}
+
+row3 {
+	background-color:transparent;
+}
+
+body {
+	margin-left: 50px;
+	margin-right: 50px;
+	border-radius: 15%;
+}
+
+header {
+	
+	background-color:transparent;
+	
+	
+	padding: 10px;
+	padding-left: 40%;
+	padding-right: 40%;
+	margin-top: 7px;
+	align-contents:center;
+	
+}
