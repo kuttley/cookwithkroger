@@ -16,19 +16,17 @@ import com.cookwithkroger.rev2019.model.RecipeDao;
 
 @Controller 
 public class SiteController {
-//
-//	@Autowired
-//	private RecipeDao recipeDao;
-//	@Autowired
-//	private ProductDao productDao;
-//	@Autowired
-//	private CustomerDao customerDao;
+
+	@Autowired
+	private RecipeDao recipeDao;
+	@Autowired
+	private ProductDao productDao;
+	@Autowired
+	private CustomerDao customerDao;
 	
 	@RequestMapping("/")
 	public String displayMainPage() {
-//		Product product = productDao.getByUPC("1");
-//		Customer customer = customerDao.getById(1);
-//		Recipe recipe = recipeDao.getById(1);
+		
 		return "mainPage";
 	}
 	

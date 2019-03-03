@@ -2,7 +2,7 @@ package com.cookwithkroger.rev2019.model;
 
 public class Product {
 	
-	private String productUPC;
+	private int productUPC;
 	private String name;
 	private String commodity;
 	private String brand;
@@ -14,12 +14,12 @@ public class Product {
 	}
 
 
-	public String getProductUPC() {
+	public int getProductUPC() {
 		return productUPC;
 	}
 
 
-	public void setProductUPC(String productUPC) {
+	public void setProductUPC(int productUPC) {
 		this.productUPC = productUPC;
 	}
 

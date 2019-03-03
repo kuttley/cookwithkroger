@@ -15,20 +15,20 @@ public class ProductJDBCDao implements ProductDao {
 	}
 	
 	@Override
-	public Product getByUPC(String productUPC) {
+	public Product getByUPC(int productUPC) {
 		String getProductByUPCSql = "SELECT upc, product_description, commodity, brand, product_size FROM product WHERE UPC = ?";
 		
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getProductByUPCSql, productUPC);
 		
 		Product p = null;
 		if (result.next()) {
-			p = createProduct(result.getString("upc"), result.getString("product_description"), result.getString("commodity"), result.getString("brand"), result.getInt("product_size"));
+			p = createProduct(result.getInt("upc"), result.getString("product_description"), result.getString("commodity"), result.getString("brand"), result.getInt("product_size"));
 		}
 		
 		return p;
 	}
 	
-	private Product createProduct(String upc, String name, String commodity, String brand, int productSize) {
+	private Product createProduct(int upc, String name, String commodity, String brand, int productSize) {
 		Product p = new Product();
 		p.setName(name);
 		p.setProductUPC(upc);
