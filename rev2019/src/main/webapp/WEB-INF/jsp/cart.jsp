@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 
@@ -26,18 +27,35 @@
 	<c:url value="css/AboutUs5.png" var="aboutus" />
 
 	<c:url value="/" var="mainPageLink" />
-	<a href = "${mainPageLink}"><img src="${logourl}" id="logo" /></a>
+	<a href="${mainPageLink}"><img src="${logourl}" id="logo"></a>
 	<c:url value="/aboutUs" var="aboutusLink" />
-	<a href="${aboutusLink}"><img src="${aboutus}" id="aboutus" /></a>
+	<a href="${aboutusLink}"><img src="${aboutus}" id="aboutus"></a>
 
 	<div id="bodyish">
-		<h1>Your Cart</h1>
-		<div class="container">
+		<h1 class="pt-3">Your Cart</h1>
+		<div class="container mt-3">
+			<c:set var="totalPrice" value="0" />
 			<c:forEach var="ingredient" items="${ingredients}">
-				<h5>${ingredient.name}</h5>
-			</c:forEach>
-			
+				<fmt:setLocale value="en_US" />
+				<fmt:formatNumber var="ingPrice" value="${ingredient.price}" type="CURRENCY" pattern="$0.00" />
+				<div class="d-flex justify-content-between">
+					<h5>${ingredient.name}</h5> 
+					<h5>${ingPrice}</h5>
+				</div>
 				
+				<c:set var="totalPrice" value="${totalPrice + ingredient.price}" />
+			</c:forEach>
+			<fmt:formatNumber var="totalPrice" value="${totalPrice}" type="CURRENCY" pattern="$0.00" />
+			<h5 class="text-center mt-5">Total: ${totalPrice}</h5>
+
+			<c:url value="/thankyouPage" var="thankYouLink" />
+			<div class="text-center">
+				<a href="${thankYouLink}">
+					<button type="button" class="btn btn-outline-success btn-sm mb-5">Check
+						Out</button>
+				</a>
+			</div>
+
 		</div>
 	</div>
 

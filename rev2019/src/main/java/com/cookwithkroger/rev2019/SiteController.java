@@ -77,9 +77,9 @@ public class SiteController {
 		for (String i : ingredients) {
 			ingredientList.add(productDao.getByUPC(Integer.parseInt(i)));
 		}
-		
+		cartDao.emptyCart(1);
 		cartDao.addItemsToCart(ingredientList, 1);
-		request.setAttribute("ingredients", cartDao.getAllProductUPCsInCart(1));
+		request.setAttribute("ingredients", cartDao.getAllProductsInCart(1));
 		return "cart";
 	}
 	
