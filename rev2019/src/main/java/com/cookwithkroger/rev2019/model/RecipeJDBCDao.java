@@ -62,7 +62,7 @@ public class RecipeJDBCDao implements RecipeDao {
 	
 	private List<Recipe> getAllRecipes() {
 		
-		String getAllRecipes = "SELECT * FROM recipe";
+		String getAllRecipes = "SELECT * FROM recipe ORDER BY recipe_price";
 		
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipes);
 		
@@ -85,7 +85,7 @@ public class RecipeJDBCDao implements RecipeDao {
 	public List<Recipe> getRecipeInPriceRange(double price) {
 		List<Recipe> recipeInPriceList = new ArrayList<Recipe>();
 		
-		String getAllRecipes = "SELECT * FROM recipe WHERE recipe_price < ?";
+		String getAllRecipes = "SELECT * FROM recipe WHERE recipe_price < ? ORDER BY recipe_price";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipes, price);
 		while (result.next()) {
 			recipeInPriceList.add(createRecipe(result.getInt("recipe_id"), 
@@ -133,7 +133,7 @@ public class RecipeJDBCDao implements RecipeDao {
 	public List<Recipe> getRecipeInPriceRangeNumServings(double price, int numOfServings) {
 		List<Recipe> recipeInPriceList = new ArrayList<Recipe>();
 		
-		String getAllRecipes = "SELECT * FROM recipe WHERE recipe_price < ?";
+		String getAllRecipes = "SELECT * FROM recipe WHERE recipe_price < ? ORDER BY recipe_price";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipes, price / numOfServings);
 		while (result.next()) {
 			recipeInPriceList.add(createRecipe(result.getInt("recipe_id"), 
@@ -247,7 +247,7 @@ public class RecipeJDBCDao implements RecipeDao {
 	public List<Recipe> getRecipeForPrepTime(int timeToCook) {
 		List<Recipe> recipePrepTime = new ArrayList<Recipe>();
 		
-		String getAllRecipeByPrepTime = "SELECT recipe_ID FROM recipe WHERE time_to_cook < ?";
+		String getAllRecipeByPrepTime = "SELECT recipe_ID FROM recipe WHERE time_to_cook < ? ORDER BY recipe_price";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipeByPrepTime, timeToCook);
 		while (result.next()) {
 			recipePrepTime.add(getById(result.getInt("recipe_id")));
