@@ -185,6 +185,7 @@ public class RecipeJDBCDao implements RecipeDao {
 					}
 				}
 			}
+			currentRecipe.setPrice(thisPrice);
 			if (thisPrice < price) {
 				recipeListInRange.add(currentRecipe);
 			}
@@ -297,9 +298,9 @@ public class RecipeJDBCDao implements RecipeDao {
 	
 	@Override
 	public List<Recipe> getRecipeThatMeetSearch(double price, int customer_ID, String categoryName, int timeToCook, int numberOfServings) {
-		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, customer_ID, numberOfServings);
 		List<Recipe> recipesInCategory = getRecipeInCategory(categoryName);
 		List<Recipe> recipesInTimeToCook = getRecipeForPrepTime(timeToCook);
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, customer_ID, numberOfServings);
 		
 		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
 		

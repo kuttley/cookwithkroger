@@ -36,6 +36,14 @@ public class ProductJDBCDao implements ProductDao {
 		p.setBrand(brand);
 		p.setProductSize(productSize);
 		
+		String getPriceByUPCSql = "SELECT product_price FROM product_store WHERE upc = ?";
+		
+		SqlRowSet resultPrice = jdbcTemplate.queryForRowSet(getPriceByUPCSql, upc);
+		
+		if(resultPrice.next()) {
+			p.setPrice(resultPrice.getDouble("product_price"));
+		}
+		
 		String getProductByUPCSql = "SELECT upc FROM pantry_products WHERE upc = ?";
 		
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getProductByUPCSql, upc);
