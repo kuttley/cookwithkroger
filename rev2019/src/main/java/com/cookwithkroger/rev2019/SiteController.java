@@ -7,11 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller 
-public class HelloController {
+public class SiteController {
 
 	@RequestMapping("/")
-	public String displayGreeting() {
+	public String displayMainPage() {
 		
-		return "greeting";
+		return "mainPage";
+	}
+	
+	@RequestMapping("/recipeList")
+	public String displayRecipeList() {
+		
+		return "recipeList";
 	}
 }
