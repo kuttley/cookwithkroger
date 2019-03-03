@@ -77,5 +77,13 @@ public class CustomerJDBCDao implements CustomerDao {
 		
 		return resultsList;
 	}
+	
+	@Override
+	public void buyItems(List<Product> listProducts, int pantry_id) {
+		for (Product product: listProducts) {
+			String addItemsToPantry = "INSERT INTO pantry_products (pantry_id, upc) VALUES (?,?);";
+			jdbcTemplate.update(addItemsToPantry, pantry_id, product.getProductUPC());
+		}
+	}
 
 }

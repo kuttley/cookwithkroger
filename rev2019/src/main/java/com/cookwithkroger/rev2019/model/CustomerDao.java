@@ -6,5 +6,6 @@ import com.cookwithkroger.rev2019.model.Customer;
 
 public interface CustomerDao {
 	Customer getById(int CustomerId);
-	public List<Integer> getItemUPCFromPantry(int customerId);
+	List<Integer> getItemUPCFromPantry(int customerId);
+	void buyItems(List<Product> listProducts, int pantry_id);
 }
