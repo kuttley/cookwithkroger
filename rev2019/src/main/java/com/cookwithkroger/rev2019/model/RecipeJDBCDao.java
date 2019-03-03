@@ -166,4 +166,33 @@ public class RecipeJDBCDao implements RecipeDao {
 		
 		return resultsList;
 	}
+	
+	@Override
+	public List<Recipe> getRecipeInCategory(String categoryName) {
+		
+		List<Recipe> recipeInCategory = new ArrayList<Recipe>();
+		
+		String getAllRecipeIDInCat = "SELECT recipe_ID FROM recipe_category WHERE category_ID = ?";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipeIDInCat, categoryName);
+		if (result.next()) {
+			recipeInCategory.add(getById(result.getInt("recipe_id")));
+		}
+		
+		return recipeInCategory;
+	}
+	
+	@Override
+	public List<Recipe> getRecipeForPrepTime(int timeToCook) {
+		
+		List<Recipe> recipePrepTime = new ArrayList<Recipe>();
+		
+		String getAllRecipeByPrepTime = "SELECT recipe_ID FROM recipe WHERE time_to_cook < ?";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipeByPrepTime, timeToCook);
+		if (result.next()) {
+			recipePrepTime.add(getById(result.getInt("recipe_id")));
+		}
+		
+		return recipePrepTime;
+	}
+
 }

@@ -1,14 +1,9 @@
 package com.cookwithkroger.rev2019.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.sql.DataSource;
-
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
 import com.cookwithkroger.rev2019.model.Customer;
 import com.cookwithkroger.rev2019.model.CustomerDao;
 
