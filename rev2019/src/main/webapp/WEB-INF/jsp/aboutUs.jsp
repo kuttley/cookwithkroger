@@ -16,7 +16,7 @@
 		<c:url value="css/CWKLogo5.png" var="logourl" />
 		<c:url value="css/AboutUs5.png" var="aboutus" />
 
-		<c:url value="/mainPage" var="mainPageLink" />
+		<c:url value="/" var="mainPageLink" />
 		<a href = "${mainPageLink}"><img src="${logourl}" id="logo" /></a>
 		<img src="${aboutus}" id="aboutus" />
 	
