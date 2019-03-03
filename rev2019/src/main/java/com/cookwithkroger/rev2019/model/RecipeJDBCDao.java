@@ -19,7 +19,7 @@ public class RecipeJDBCDao implements RecipeDao {
 	
 	@Override
 	public Recipe getById(int recipeId) {
-		String getRecipeByIdSql = "SELECT recipe_id, name, recipe_instructions, recipe_description, time_to_cook";
+		String getRecipeByIdSql = "SELECT recipe_id, name, recipe_instructions, recipe_description, time_to_cook FROM recipe WHERE recipe_id = ?";
 		
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getRecipeByIdSql, recipeId);
 		
