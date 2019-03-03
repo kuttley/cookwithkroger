@@ -17,6 +17,10 @@ font-family: 'Pacifico';font-size: 40px;
 #ingP {
 font-family: 'Pacifico';font-size: 20px;
 }
+
+#vi {
+font-family: 'Pacifico';font-size: 14px;
+}
 </style>
 </head>
 
@@ -28,12 +32,19 @@ font-family: 'Pacifico';font-size: 20px;
 		<p>${ recipe.instructions[ count ] }</p>
 	</c:forEach>
 	
+	<p id="videop">
+	
+	<iframe id="video" width="336" height="189" src="${recipe.recipeVideo}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>
+	</p>
+	
 	<div id="Ingredients">
 	
 	<p id = "ingP"> Ingredients </p>
 	
 	
-		<form action="/cart.jsp" method="get">
+		<c:url value="/cart" var="cart" />
+		<form method="GET" action="${cart}">
+	
   		<input type="checkbox" name="vehicle" value="Bike"> Ingredient 1<br>
   		<input type="checkbox" name="vehicle" value="Car" checked="checked"> Ingredient 2<br>
   		<input type="submit" value="Submit">

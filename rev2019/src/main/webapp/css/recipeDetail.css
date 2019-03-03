@@ -18,6 +18,18 @@ body {
 
 }
 
+#videop {
+	align-content: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#video {
+	align-content:
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #bodyInside {
 	margin-left: 8%;
 	margin-right: 8%;
