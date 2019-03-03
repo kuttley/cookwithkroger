@@ -1,0 +1,31 @@
+html {
+	display:block;
+	background-image: url("Background3.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+header {
+	
+	height: 110px;
+	width: 100%;
+	
+}
+
+
+#aboutus {
+	width: 18%;
+	display: inline-block;
+	position: fixed;
+	top: 10px;
+  	left: 41.5%;
+	
+}
+
+#logo {
+	
+	width:15%;
+	margin-left: auto;
+	margin-right: auto;
+	
+}

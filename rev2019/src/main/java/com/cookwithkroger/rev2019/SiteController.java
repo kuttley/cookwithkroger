@@ -65,4 +65,9 @@ public class SiteController {
 	public String displayAboutUs() {
 		return "aboutUs";
 	}
+	
+	@RequestMapping("/cart")
+	public String displayCart() {
+		return "cart";
+	}
 }
