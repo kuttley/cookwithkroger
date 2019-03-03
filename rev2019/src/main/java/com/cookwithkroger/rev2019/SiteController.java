@@ -80,6 +80,7 @@ public class SiteController {
 		cartDao.emptyCart(1);
 		cartDao.addItemsToCart(ingredientList, 1);
 		request.setAttribute("ingredients", cartDao.getAllProductsInCart(1));
+		request.setAttribute("ingQty", cartDao.getAllProductsWithQuantitiesInCart(1));
 		return "cart";
 	}
 	

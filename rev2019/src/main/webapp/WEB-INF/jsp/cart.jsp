@@ -37,13 +37,13 @@
 			<c:set var="totalPrice" value="0" />
 			<c:forEach var="ingredient" items="${ingredients}">
 				<fmt:setLocale value="en_US" />
-				<fmt:formatNumber var="ingPrice" value="${ingredient.price}" type="CURRENCY" pattern="$0.00" />
+				<fmt:formatNumber var="ingPrice" value="${(ingredient.price  * ingQty.get(ingredient.productUPC))}" type="CURRENCY" pattern="$0.00" />
 				<div class="d-flex justify-content-between">
-					<h5>${ingredient.name}</h5> 
+					<h5>${ingQty.get(ingredient.productUPC)} ${ingredient.name}</h5> 
 					<h5>${ingPrice}</h5>
 				</div>
 				
-				<c:set var="totalPrice" value="${totalPrice + ingredient.price}" />
+				<c:set var="totalPrice" value="${totalPrice + (ingredient.price * ingQty.get(ingredient.productUPC))}" />
 			</c:forEach>
 			<fmt:formatNumber var="totalPrice" value="${totalPrice}" type="CURRENCY" pattern="$0.00" />
 			<h5 class="text-center mt-5">Total: ${totalPrice}</h5>
