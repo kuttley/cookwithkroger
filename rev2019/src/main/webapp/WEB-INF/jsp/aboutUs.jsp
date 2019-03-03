@@ -21,6 +21,24 @@
 	
 
 	</header>
+	
+	<p>Hi everyone! We are students from TechElevator</p>
+	
+	<div>
+		<h1>Brett Bauereis</h1>
+	</div>
+	
+	<div>
+		<h1>Kali Uttley</h1>
+	</div>
+	
+	<div>
+		<h1>Brett Anderson</h1>
+	</div>
+	
+	<div>
+		<h1>Quinn Hebert</h1>
+	</div>
 
 
 	
