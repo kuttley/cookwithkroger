@@ -1,5 +1,8 @@
 package com.cookwithkroger.rev2019.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -44,6 +47,35 @@ public class CustomerJDBCDao implements CustomerDao {
 		c.setEmail(email_address);
 		
 		return c;
+	}
+	
+	@Override
+	public List<Integer> getItemUPCFromPantry(int customerId) {
+		
+		String getPantryID = "SELECT pantry_ID FROM customer_pantry WHERE customer_id = ?";
+		
+		SqlRowSet resultPantryID = jdbcTemplate.queryForRowSet(getPantryID, customerId);
+		
+		int pantry_ID = -1;
+		if (resultPantryID.next()) {
+			pantry_ID = resultPantryID.getInt("pantry_ID");
+		}
+		
+		if(pantry_ID == -1) {
+			return null;
+		}
+		
+		
+		String getItemUPCsFromPantry = "SELECT upc FROM pantry_products WHERE pantry_ID = ?";
+		
+		SqlRowSet result = jdbcTemplate.queryForRowSet(getItemUPCsFromPantry, pantry_ID);
+		
+		List<Integer> resultsList = new ArrayList<Integer>();
+		if (result.next()) {
+			resultsList.add(result.getInt("upc"));
+		}
+		
+		return resultsList;
 	}
 
 }

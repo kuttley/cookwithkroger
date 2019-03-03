@@ -66,7 +66,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipes);
 		
 		List<Recipe> recipeList = new ArrayList<Recipe>();
-		if (result.next()) {
+		while (result.next()) {
 			recipeList.add(createRecipe(result.getInt("recipe_id"), 
 					result.getString("name"),
 					result.getString("recipe_instructions"),
@@ -86,7 +86,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		
 		String getAllRecipes = "SELECT * FROM recipe WHERE recipe_price < ?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipes, price);
-		if (result.next()) {
+		while (result.next()) {
 			recipeInPriceList.add(createRecipe(result.getInt("recipe_id"), 
 					result.getString("name"),
 					result.getString("recipe_instructions"),
@@ -160,7 +160,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getItemUPCsFromPantry, pantry_ID);
 		
 		List<Integer> resultsList = new ArrayList<Integer>();
-		if (result.next()) {
+		while (result.next()) {
 			resultsList.add(result.getInt("upc"));
 		}
 		
@@ -174,7 +174,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		
 		String getAllRecipeIDInCat = "SELECT recipe_ID FROM recipe_category WHERE category_ID = ?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipeIDInCat, categoryName);
-		if (result.next()) {
+		while (result.next()) {
 			recipeInCategory.add(getById(result.getInt("recipe_id")));
 		}
 		
@@ -188,7 +188,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		
 		String getAllRecipeByPrepTime = "SELECT recipe_ID FROM recipe WHERE time_to_cook < ?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipeByPrepTime, timeToCook);
-		if (result.next()) {
+		while (result.next()) {
 			recipePrepTime.add(getById(result.getInt("recipe_id")));
 		}
 		
