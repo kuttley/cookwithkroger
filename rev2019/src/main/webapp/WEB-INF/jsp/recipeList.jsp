@@ -22,6 +22,15 @@
 
 </head>
 <body>
+	<c:url value="css/CWKLogo5.png" var="logourl" />
+		<c:url value="css/AboutUs5.png" var="aboutus" />
+
+		<img src="${logourl}" id="logo" />
+		<c:url value="/aboutUs" var="aboutusLink" />
+		<a href = "${aboutusLink}"><img src="${aboutus}" id="aboutus" /></a>
+
+
+<div id="bodyish">
 
 
 	<header>
@@ -31,6 +40,8 @@
 			<img src="${recipesTitle}" id="recipesTitle" />
 		</h1>
 	</header>
+
+
 
 	<section id="main-content">
 		<div class="container" id="row3">
@@ -64,60 +75,6 @@
 		</div>
 	</section>
 
-	<%-- 
-	
-	
-	
-	<table>
-		<tr>
-			<c:forEach var="recipe" items="${recipes}">
-				<td>
-					<c:url var="recipePage"
-						value="/recipeDetail?recipeId=${recipe.recipeId}" />
-			
-				
-			
-			
-			
-		
-		
-				</td>
-			</c:forEach>
-		<tr>
-	</table>
-	
-	
-	<section id="main-content">
-		<div class="container">
-
-			<div class="row">
-				<div class="card-deck">
-					<c:forEach var="recipe" items="${recipes}">
-						<div class="col-sm-3 col-md-3 pb-2">
-							<c:url var="recipePage"
-								value="/recipeDetail?recipeId=${recipe.recipeId}" />
-								
-							<div class="card card-outline-info">
-								<div class="card-block">
-									<c:url var="recipeImage" value="${recipe.recipeImage}" />
-									<div class="card-title">
-										<a href="${recipePage}"> <img src="${recipeImage}" class="card-img-top" alt="recipeimage">
-										</a>
-									</div>
-									<a href="${recipePage}">${recipe.description}</a>
-
-									<p class="card-text">${recipe.cookTime} m <i class="far fa-clock"></i>
-									</p>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	--%>
 
 
 
@@ -132,6 +89,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-
+</div>
 </body>
 </html>
