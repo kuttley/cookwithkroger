@@ -25,7 +25,7 @@ CREATE TABLE recipe
 (
     recipe_ID SERIAL,
     name VARCHAR(64) NOT NULL,
-    recipe_instructions VARCHAR(128) NOT NULL,
+    recipe_instructions VARCHAR(1000) NOT NULL,
     recipe_description VARCHAR(128) NOT NULL,
     time_to_cook int NOT NULL,
 
