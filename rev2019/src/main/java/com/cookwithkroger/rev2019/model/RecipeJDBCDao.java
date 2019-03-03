@@ -10,14 +10,15 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RecipeJDBCDao {
+public class RecipeJDBCDao implements RecipeDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	public RecipeJDBCDao(DataSource dataSource) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public Recipe getById(String recipeId) {
+	@Override
+	public Recipe getById(int recipeId) {
 		String getRecipeByIdSql = "SELECT recipe_id, name, recipe_instructions, recipe_description, time_to_cook";
 		
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getRecipeByIdSql, recipeId);

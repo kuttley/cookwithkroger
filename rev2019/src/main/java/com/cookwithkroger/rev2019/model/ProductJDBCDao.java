@@ -14,6 +14,7 @@ public class ProductJDBCDao implements ProductDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
+	@Override
 	public Product getByUPC(String productUPC) {
 		String getProductByUPCSql = "SELECT upc, product_description, commodity, brand, product_size FROM product WHERE UPC = ?";
 		
