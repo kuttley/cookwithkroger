@@ -128,6 +128,7 @@ CREATE TABLE cart_products
 (
     cart_ID INT NOT NULL,
     upc INT NOT NULL,
+    quantity INT NOT NULL,
 
     CONSTRAINT pk_cart_products PRIMARY KEY (cart_ID, upc),
     CONSTRAINT fk_customer FOREIGN KEY (cart_ID) REFERENCES customer_cart (cart_ID),

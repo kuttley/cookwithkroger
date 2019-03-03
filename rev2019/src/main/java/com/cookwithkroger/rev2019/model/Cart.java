@@ -4,6 +4,7 @@ public class Cart {
 	
 	private int cartID;
 	private int customerID;
+	private int quantity;
 	
 	public Cart(){
 		
@@ -25,4 +26,11 @@ public class Cart {
 		this.customerID = customerID;
 	}
 	
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 }
