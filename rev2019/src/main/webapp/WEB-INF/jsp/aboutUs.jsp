@@ -76,12 +76,7 @@ h1 {
 			</tr>
 
 		</table>
-			<div id="theGroup">
-				<h1>The Group</h1>
-			<img src="${techElevator}" id="techElevator" />
-				
-					<a id="group">We are all currently students in the Tech Elevator 14
-						week coding bootcamp.</a></div>
+			
 
 
 		
