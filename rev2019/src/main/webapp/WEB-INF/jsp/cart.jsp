@@ -18,7 +18,8 @@
 
 		<c:url value="/" var="mainPageLink" />
 		<a href = "${mainPageLink}"><img src="${logourl}" id="logo" /></a>
-		<img src="${aboutus}" id="aboutus" />
+		<c:url value="/aboutUs" var="aboutusLink" />
+		<a href = "${aboutusLink}"><img src="${aboutus}" id="aboutus" /></a>
 	
 
 	</header>

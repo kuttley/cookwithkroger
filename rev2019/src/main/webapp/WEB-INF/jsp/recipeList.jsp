@@ -22,6 +22,8 @@
 
 </head>
 <body>
+
+
 	<header>
 		<c:url value="css/RecipesTitle.png" var="recipesTitle" />
 
