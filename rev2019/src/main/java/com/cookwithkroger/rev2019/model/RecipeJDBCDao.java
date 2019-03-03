@@ -231,7 +231,6 @@ public class RecipeJDBCDao implements RecipeDao {
 	
 	@Override
 	public List<Recipe> getRecipeForPrepTime(int timeToCook) {
-		
 		List<Recipe> recipePrepTime = new ArrayList<Recipe>();
 		
 		String getAllRecipeByPrepTime = "SELECT recipe_ID FROM recipe WHERE time_to_cook < ?";
