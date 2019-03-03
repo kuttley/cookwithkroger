@@ -12,6 +12,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cookwithkroger.rev2019.model.Cart;
+import com.cookwithkroger.rev2019.model.CartDao;
 import com.cookwithkroger.rev2019.model.Customer;
 import com.cookwithkroger.rev2019.model.CustomerDao;
 import com.cookwithkroger.rev2019.model.Product;
@@ -28,6 +30,8 @@ public class SiteController {
 	private ProductDao productDao;
 	@Autowired
 	private CustomerDao customerDao;
+	@Autowired
+	private CartDao cartDao;
 	
 	private List<Recipe> currentRecipes;
 	
@@ -67,7 +71,15 @@ public class SiteController {
 	}
 	
 	@RequestMapping("/cart")
-	public String displayCart() {
+	public String displayCart(HttpServletRequest request) {
+		String[] ingredients = request.getParameterValues("ingredient");
+		List<Product> ingredientList = new ArrayList<>();
+		for (String i : ingredients) {
+			ingredientList.add(productDao.getByUPC(Integer.parseInt(i)));
+		}
+		
+		cartDao.addItemsToCart(ingredientList, 1);
+		request.setAttribute("ingredients", cartDao.getAllProductUPCsInCart(1));
 		return "cart";
 	}
 	
