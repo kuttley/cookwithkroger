@@ -177,7 +177,7 @@ VALUES (1, 14, 4.99, 4.99);
 INSERT INTO product_store (store_ID, upc, product_price, product_kroger_plus_price)
 VALUES (1, 15, 3.99, 3.99);
 
-INSERT INTO customer (username, firstname, lastname, emailaddress, password)
+INSERT INTO customer (username, firstname, lastname, email_address, password)
 VALUES ('user', 'Tracy', 'McGrady', 'magicsRealNumberOne@gmail.com', 'password123');
 
 INSERT INTO customer_pantry (customer_id)
