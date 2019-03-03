@@ -13,7 +13,7 @@ BEGIN TRANSACTION;
 CREATE TABLE product
 (
     upc SERIAL,
-    product_description VARCHAR(128) NOT NULL,
+    prouduct_description VARCHAR(128) NOT NULL,
     commodity VARCHAR(64) NOT NULL,
     brand VARCHAR(64) NOT NULL,
     product_size INT NOT NULL,
@@ -86,6 +86,7 @@ CREATE TABLE customer
     userName VARCHAR(64) NOT NULL,
     firstName VARCHAR(64) NOT NULL,
     lastName VARCHAR(64) NOT NULL,
+    emailAddress VARCHAR(64),
     password VARCHAR(64) NOT NULL,
 
     CONSTRAINT pk_customer PRIMARY KEY (customerId)
