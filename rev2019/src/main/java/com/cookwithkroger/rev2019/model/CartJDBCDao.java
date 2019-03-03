@@ -42,8 +42,14 @@ public class CartJDBCDao implements CartDao{
 	}
 	
 	@Override
-	public void addItemsToCart(List<Product> listProducts, int cart_ID, int quantity) {
+	public void addItemsToCart(List<Product> listProducts, int cart_ID) {
 		for (Product product: listProducts) {
+			String getQuantityOfProduct = "SELECT quantity FROM recipe_product WHERE upc = ?";
+			int quantity = 1;
+			SqlRowSet result = jdbcTemplate.queryForRowSet(getQuantityOfProduct, product.getProductUPC());
+			if (result.next()) {
+				quantity = result.getInt("quantity");
+			}
 			String addItemsToPantry = "INSERT INTO cart_products (cart_ID, upc, quantity) VALUES (?,?,?);";
 			jdbcTemplate.update(addItemsToPantry, cart_ID, product.getProductUPC(),quantity);
 		}
