@@ -128,6 +128,54 @@ public class RecipeJDBCDao implements RecipeDao {
 		return recipeListInRange;
 	}
 	
+	@Override
+	public List<Recipe> getRecipeInPriceRangeNumServings(double price, int numOfServings) {
+		List<Recipe> recipeInPriceList = new ArrayList<Recipe>();
+		
+		String getAllRecipes = "SELECT * FROM recipe WHERE recipe_price < ?";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipes, price * numOfServings);
+		while (result.next()) {
+			recipeInPriceList.add(createRecipe(result.getInt("recipe_id"), 
+					result.getString("name"),
+					result.getString("recipe_instructions"),
+					result.getString("recipe_description"),
+					result.getInt("time_to_cook"),
+					result.getDouble("recipe_price"),
+					result.getString("recipe_video"),
+					result.getString("recipe_image")
+					));
+		}
+		
+		return recipeInPriceList;
+	}
+	
+	@Override
+	public List<Recipe> getRecipeInPriceRangeNumServings(double price, int customer_ID, int numOfServings) {
+		
+		List<Recipe> recipeListInRange = new ArrayList<Recipe>();
+		
+		List<Recipe> recipeList = getAllRecipes();
+		
+		List<Integer> upcsList = getItemUPCFromPantry(customer_ID);
+				
+		for (Recipe currentRecipe: recipeList) {
+			double thisPrice = currentRecipe.getPrice() * numOfServings;
+			Map<Product, Integer> currentProducts = currentRecipe.getIngredients();
+			for (Product currentProduct: currentProducts.keySet()) {
+				for (Integer upc: upcsList) {
+					if (currentProduct.getProductUPC() == upc) {
+						thisPrice -= getPriceOfProduct(upc) * currentProducts.get(currentProduct) * numOfServings;
+					}
+				}
+			}
+			if (thisPrice < price) {
+				recipeListInRange.add(currentRecipe);
+			}
+		}
+		
+		return recipeListInRange;
+	}
+	
 	private double getPriceOfProduct(int upc) {
 		String getPriceOfProd = "SELECT product_price FROM product_store WHERE upc = ?";
 		
@@ -193,6 +241,124 @@ public class RecipeJDBCDao implements RecipeDao {
 		}
 		
 		return recipePrepTime;
+	}
+	
+	@Override
+	public List<Recipe> getRecipeThatMeetSearch(double price, String categoryName, int timeToCook, int numberOfServings) {
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, numberOfServings);
+		List<Recipe> recipesInCategory = getRecipeInCategory(categoryName);
+		List<Recipe> recipesInTimeToCook = getRecipeForPrepTime(timeToCook);
+		
+		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
+		
+		for (Recipe r1: recipesInPriceRange) {
+			for (Recipe r2: recipesInCategory) {
+				if (r1 == r2) {
+					for (Recipe r3: recipesInTimeToCook) {
+						if (r1 == r3) {
+							resultRecipeList.add(r3);
+						}
+					}
+				}
+			}
+		}
+		
+		return resultRecipeList;
+	}
+	
+	@Override
+	public List<Recipe> getRecipeThatMeetSearch(double price, int customer_ID, String categoryName, int timeToCook, int numberOfServings) {
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, customer_ID, numberOfServings);
+		List<Recipe> recipesInCategory = getRecipeInCategory(categoryName);
+		List<Recipe> recipesInTimeToCook = getRecipeForPrepTime(timeToCook);
+		
+		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
+		
+		for (Recipe r1: recipesInPriceRange) {
+			for (Recipe r2: recipesInCategory) {
+				if (r1 == r2) {
+					for (Recipe r3: recipesInTimeToCook) {
+						if (r1 == r3) {
+							resultRecipeList.add(r3);
+						}
+					}
+				}
+			}
+		}
+		
+		return resultRecipeList;
+	}
+	
+	@Override
+	public List<Recipe> getRecipeThatMeetSearch(double price, int timeToCook, int numberOfServings) {
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, numberOfServings);
+		List<Recipe> recipesInTimeToCook = getRecipeForPrepTime(timeToCook);
+		
+		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
+		
+		for (Recipe r1: recipesInPriceRange) {
+			for (Recipe r2: recipesInTimeToCook) {
+				if (r1 == r2) {
+					resultRecipeList.add(r2);
+				}
+			}
+		}
+		
+		return resultRecipeList;
+	}
+	
+	@Override
+	public List<Recipe> getRecipeThatMeetSearch(double price, int customer_ID, int timeToCook, int numberOfServings) {
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, customer_ID, numberOfServings);
+		List<Recipe> recipesInTimeToCook = getRecipeForPrepTime(timeToCook);
+		
+		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
+		
+		for (Recipe r1: recipesInPriceRange) {
+			for (Recipe r2: recipesInTimeToCook) {
+				if (r1 == r2) {
+					resultRecipeList.add(r2);
+				}
+			}
+		}
+		
+		return resultRecipeList;
+	}
+
+	@Override
+	public List<Recipe> getRecipeThatMeetSearch(double price, String categoryName, int numberOfServings) {
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, numberOfServings);
+		List<Recipe> recipesInCategory = getRecipeInCategory(categoryName);
+		
+		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
+		
+		for (Recipe r1: recipesInPriceRange) {
+			for (Recipe r2: recipesInCategory) {
+				if (r1 == r2) {
+					resultRecipeList.add(r2);
+				}
+			}
+		}
+		
+		return resultRecipeList;
+	}
+
+	@Override
+	public List<Recipe> getRecipeThatMeetSearch(double price, int customer_ID, String categoryName, int numberOfServings) {
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, customer_ID, numberOfServings);
+		List<Recipe> recipesInCategory = getRecipeInCategory(categoryName);
+		
+		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
+		
+		for (Recipe r1: recipesInPriceRange) {
+			for (Recipe r2: recipesInCategory) {
+				if (r1 == r2) {
+					resultRecipeList.add(r2);
+				}
+			}
+		}
+		
+		return resultRecipeList;
 	}
 
 }
