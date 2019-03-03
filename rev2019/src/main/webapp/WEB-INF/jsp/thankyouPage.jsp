@@ -8,18 +8,20 @@
 	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 <style>
 h1 {
-font-family: 'Pacifico';font-size: 30px;
+font-family: 'Pacifico'; font-size: 34px;
+color: #3A3A3A;
 }
+
 </style>
 <body>
 
-	<h1>Thank you RevolutionUC Hackathon!</h1>
+	<h1> Thank you RevolutionUC !</h1>
 	
-	<p>Thank you for all the free food and so many oppurtunities to learn</p>
+	<p>Thank you for all the free food and so many opportunities to learn.</p>
 	
 	<p>If you have any question for us feel free to ask!</p>
 	
-	<p>Also if you would like to learn more about us we have provided links to our LinkedIn pages</p>
+	<p>Also, if you would like to learn more about any us we have provided links to our LinkedIn pages</p>
 	
 	<p>Just go to our About Us page and click on any of our pictures and you will be redirected to our LinkedIn pages</p>
 	

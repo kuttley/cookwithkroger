@@ -13,7 +13,7 @@
 <style>
 h1 {
 	font-family: 'Pacifico';
-	font-size: 27px;
+	font-size: 40px;
 }
 
 </style>

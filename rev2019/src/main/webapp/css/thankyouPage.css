@@ -1,0 +1,23 @@
+html {
+	display:block;
+	background-image: url("Background3.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+body {
+	background-color: rgba(204, 204, 204, 0.80);
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 50px;
+	
+	
+}
+
+p {
+	font-size: 18px;
+}
+
+
+
