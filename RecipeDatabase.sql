@@ -29,6 +29,7 @@ CREATE TABLE recipe
     recipe_description VARCHAR(128) NOT NULL,
     time_to_cook int NOT NULL,
     recipe_video VARCHAR(200),
+    recipe_price FLOAT NOT NULL,
 
     CONSTRAINT pk_recipe PRIMARY KEY (recipe_ID)
 );
