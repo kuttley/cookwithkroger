@@ -70,4 +70,9 @@ public class SiteController {
 	public String displayCart() {
 		return "cart";
 	}
+	
+	@RequestMapping("/thankyouPage")
+	public String displayThankyouPage() {
+		return "thankyouPage";
+	}
 }
