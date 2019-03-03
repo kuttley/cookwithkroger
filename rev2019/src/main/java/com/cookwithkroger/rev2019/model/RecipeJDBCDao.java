@@ -275,9 +275,10 @@ public class RecipeJDBCDao implements RecipeDao {
 	
 	@Override
 	public List<Recipe> getRecipeThatMeetSearch(double price, String categoryName, int timeToCook, int numberOfServings) {
-		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, numberOfServings);
+		
 		List<Recipe> recipesInCategory = getRecipeInCategory(categoryName);
 		List<Recipe> recipesInTimeToCook = getRecipeForPrepTime(timeToCook);
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, numberOfServings);
 		
 		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
 		
@@ -286,7 +287,7 @@ public class RecipeJDBCDao implements RecipeDao {
 				if (r1.getRecipeId() == r2.getRecipeId()) {
 					for (Recipe r3: recipesInTimeToCook) {
 						if (r1.getRecipeId() == r3.getRecipeId()) {
-							resultRecipeList.add(r3);
+							resultRecipeList.add(r1);
 						}
 					}
 				}
@@ -309,7 +310,7 @@ public class RecipeJDBCDao implements RecipeDao {
 				if (r1.getRecipeId() == r2.getRecipeId()) {
 					for (Recipe r3: recipesInTimeToCook) {
 						if (r1.getRecipeId() == r3.getRecipeId()) {
-							resultRecipeList.add(r3);
+							resultRecipeList.add(r1);
 						}
 					}
 				}
@@ -321,15 +322,16 @@ public class RecipeJDBCDao implements RecipeDao {
 	
 	@Override
 	public List<Recipe> getRecipeThatMeetSearch(double price, int timeToCook, int numberOfServings) {
-		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, numberOfServings);
+		
 		List<Recipe> recipesInTimeToCook = getRecipeForPrepTime(timeToCook);
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, numberOfServings);
 		
 		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
 		
 		for (Recipe r1: recipesInPriceRange) {
 			for (Recipe r2: recipesInTimeToCook) {
 				if (r1.getRecipeId() == r2.getRecipeId()) {
-					resultRecipeList.add(r2);
+					resultRecipeList.add(r1);
 				}
 			}
 		}
@@ -339,15 +341,16 @@ public class RecipeJDBCDao implements RecipeDao {
 	
 	@Override
 	public List<Recipe> getRecipeThatMeetSearch(double price, int customer_ID, int timeToCook, int numberOfServings) {
-		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, customer_ID, numberOfServings);
+		
 		List<Recipe> recipesInTimeToCook = getRecipeForPrepTime(timeToCook);
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, customer_ID, numberOfServings);
 		
 		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
 		
 		for (Recipe r1: recipesInPriceRange) {
 			for (Recipe r2: recipesInTimeToCook) {
 				if (r1.getRecipeId() == r2.getRecipeId()) {
-					resultRecipeList.add(r2);
+					resultRecipeList.add(r1);
 				}
 			}
 		}
@@ -357,15 +360,16 @@ public class RecipeJDBCDao implements RecipeDao {
 
 	@Override
 	public List<Recipe> getRecipeThatMeetSearch(double price, String categoryName, int numberOfServings) {
-		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, numberOfServings);
+		
 		List<Recipe> recipesInCategory = getRecipeInCategory(categoryName);
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, numberOfServings);
 		
 		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
 		
 		for (Recipe r1: recipesInPriceRange) {
 			for (Recipe r2: recipesInCategory) {
 				if (r1.getRecipeId() == r2.getRecipeId()) {
-					resultRecipeList.add(r2);
+					resultRecipeList.add(r1);
 				}
 			}
 		}
@@ -375,15 +379,16 @@ public class RecipeJDBCDao implements RecipeDao {
 
 	@Override
 	public List<Recipe> getRecipeThatMeetSearch(double price, int customer_ID, String categoryName, int numberOfServings) {
-		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, customer_ID, numberOfServings);
+		
 		List<Recipe> recipesInCategory = getRecipeInCategory(categoryName);
+		List<Recipe> recipesInPriceRange = getRecipeInPriceRangeNumServings(price, customer_ID, numberOfServings);
 		
 		List<Recipe> resultRecipeList = new ArrayList<Recipe>();
 		
 		for (Recipe r1: recipesInPriceRange) {
 			for (Recipe r2: recipesInCategory) {
 				if (r1.getRecipeId() == r2.getRecipeId()) {
-					resultRecipeList.add(r2);
+					resultRecipeList.add(r1);
 				}
 			}
 		}
