@@ -16,11 +16,20 @@
 		<c:url value="css/CWKLogo5.png" var="logourl" />
 		<c:url value="css/AboutUs5.png" var="aboutus" />
 
-		<img src="${logourl}" id="logo" />
-		<img src="${aboutus}" id="aboutus" />
+		<c:url value="/" var="mainPageLink" />
+		<a href = "${mainPageLink}"><img src="${logourl}" id="logo" /></a>
+		<c:url value="/aboutUs" var="aboutusLink" />
+		<a href = "${aboutusLink}"><img src="${aboutus}" id="aboutus" /></a>
 	
 
 	</header>
+	
+	<table>
+		<tr>
+			<td><h1>Items in shopping cart: </h1></td>
+		</tr>
+	
+	</table>
 
 </body>
 </html>
