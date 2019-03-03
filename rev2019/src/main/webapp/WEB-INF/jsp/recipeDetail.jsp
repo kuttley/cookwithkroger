@@ -11,18 +11,47 @@
 
 <style>
 h1 {
-font-family: 'Pacifico';font-size: 30px;
+font-family: 'Pacifico';font-size: 40px;
+}
+
+#ingP {
+font-family: 'Pacifico';font-size: 20px;
 }
 </style>
 </head>
 
 <body>
-
+	<div id="bodyInside">
 	<h1>${recipe.description}</h1>
 
 	<c:forEach begin="0" end="${recipe.instructions.size() -1 }" var="count">
 		<p>${ recipe.instructions[ count ] }</p>
 	</c:forEach>
+	
+	<div id="Ingredients">
+	
+	<p id = "ingP"> Ingredients </p>
+	
+	
+		<form action="/cart.jsp" method="get">
+  		<input type="checkbox" name="vehicle" value="Bike"> Ingredient 1<br>
+  		<input type="checkbox" name="vehicle" value="Car" checked="checked"> Ingredient 2<br>
+  		<input type="submit" value="Submit">
+		</form>
+
+
+			
+	
+	
+	</div>
+	
+	
+	
+	
+	
+	</div>
+	
+	
 
 </body>
 

@@ -7,11 +7,27 @@ html {
 
 
 body {
-	margin: 10%;
-	margin-top:50px;
+	margin-left: 10%;
+	margin-right: 10%;
+	
+	margin-top:35px;
 	width: 80%;
 	height: auto ;
-	background-color: rgba(204, 204, 204, 0.7);
+	background-color: rgba(204, 204, 204, 0.85);
+	
+
+}
+
+#bodyInside {
+	margin-left: 8%;
+	margin-right: 8%;
+	margin-top: 7%;
+}
+
+#ingredients {
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 
@@ -20,5 +36,12 @@ h1 {
 	margin-left: 10%;
 	margin-right: 10%;
 	color: #3A3A3A;
+}
+
+#ingP {
+	color:#3A3A3A;
+	margin-left:10%;
+	margin-right: 10%;
+	text-align: center;
 }
 
