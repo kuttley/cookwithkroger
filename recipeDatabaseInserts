@@ -189,5 +189,8 @@ VALUES (1,5), (1,6), (1, 7);
 INSERT INTO pantry_products (pantry_id, upc)
 VALUES (1,12), (1,13);
 
+INSERT INTO customer_cart (customer_id)
+VALUES (1);
+
 
 COMMIT TRANSACTION;
