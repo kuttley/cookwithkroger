@@ -91,7 +91,7 @@ CREATE TABLE customer
     firstName VARCHAR(64) NOT NULL,
     lastName VARCHAR(64) NOT NULL,
     emailAddress VARCHAR(64),
-    password VARCHAR(64) NOT NULL,
+    password VARCHAR(64),
 
     CONSTRAINT pk_customer PRIMARY KEY (customer_ID)
 );
