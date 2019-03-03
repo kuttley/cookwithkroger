@@ -75,7 +75,7 @@ CREATE TABLE product_store
     upc INT NOT NULL,
     store_ID INT NOT NULL,
     product_price FLOAT NOT NULL,
-    product_kroger_plus_price FLOAT NOT NULL,
+    product_kroger_plus_price FLOAT,
 
     CONSTRAINT pk_product_store PRIMARY KEY (upc, store_ID),
     CONSTRAINT fk_product FOREIGN KEY (upc) REFERENCES product (upc),
