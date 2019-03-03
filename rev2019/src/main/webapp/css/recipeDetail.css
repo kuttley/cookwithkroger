@@ -9,6 +9,14 @@
 	
 }
 
+#aboutus {
+	display: inline-block;
+	position: fixed;
+	top: 10px;
+  	right: 10px;
+	align-self: flex-end;
+}
+
 
 html {
 	display:block;
@@ -22,10 +30,11 @@ body {
 	margin-left: 10%;
 	margin-right: 10%;
 	
-	margin-top:35px;
+	margin-top:90px;
 	width: 80%;
 	height: auto ;
 	background-color: rgba(204, 204, 204, 0.85);
+	border-radius: 10px;
 	
 
 }
