@@ -115,4 +115,23 @@ CREATE TABLE pantry_products
     CONSTRAINT fk_product FOREIGN KEY (upc) REFERENCES product (upc)
 );
 
+CREATE TABLE customer_cart
+(
+    cart_ID SERIAL,
+    customer_ID INT NOT NULL,
+
+    CONSTRAINT pk_customer_cart PRIMARY KEY (cart_ID),
+    CONSTRAINT fk_customer FOREIGN KEY (customer_ID) REFERENCES customer (customer_ID)
+);
+
+CREATE TABLE cart_products
+(
+    cart_ID INT NOT NULL,
+    upc INT NOT NULL,
+
+    CONSTRAINT pk_cart_products PRIMARY KEY (cart_ID, upc),
+    CONSTRAINT fk_customer FOREIGN KEY (cart_ID) REFERENCES customer_cart (cart_ID),
+    CONSTRAINT fk_product FOREIGN KEY (upc) REFERENCES product (upc)
+);
+
 COMMIT TRANSACTION;
