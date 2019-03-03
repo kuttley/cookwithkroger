@@ -49,16 +49,71 @@ public class CartJDBCDao implements CartDao{
 	}
 	
 	@Override
+	public List<Product> getAllProductsInCart(int cart_ID) {
+		List<Product> productList = new ArrayList<Product>();
+		List<Integer> upcsList = getAllProductUPCsInCart(cart_ID);
+		
+		for (Integer currentUPC: upcsList) {
+			productList.add(getByUPC(currentUPC));
+		}
+		
+		return productList;
+	}
+	
+	private Product getByUPC(int productUPC) {
+		String getProductByUPCSql = "SELECT upc, product_description, commodity, brand, product_size FROM product WHERE UPC = ?";
+		
+		SqlRowSet result = jdbcTemplate.queryForRowSet(getProductByUPCSql, productUPC);
+		
+		Product p = null;
+		if (result.next()) {
+			p = createProduct(result.getInt("upc"), result.getString("product_description"), result.getString("commodity"), result.getString("brand"), result.getInt("product_size"));
+		}
+		
+		return p;
+	}
+	
+	private Product createProduct(int upc, String name, String commodity, String brand, int productSize) {
+		Product p = new Product();
+		p.setName(name);
+		p.setProductUPC(upc);
+		p.setCommodity(commodity);
+		p.setBrand(brand);
+		p.setProductSize(productSize);
+		
+		String getPriceByUPCSql = "SELECT product_price FROM product_store WHERE upc = ?";
+		
+		SqlRowSet resultPrice = jdbcTemplate.queryForRowSet(getPriceByUPCSql, upc);
+		
+		if(resultPrice.next()) {
+			p.setPrice(resultPrice.getDouble("product_price"));
+		}
+		
+		String getProductByUPCSql = "SELECT upc FROM pantry_products WHERE upc = ?";
+		
+		SqlRowSet result = jdbcTemplate.queryForRowSet(getProductByUPCSql, upc);
+		
+		if(result.next()) {
+			p.setChecked("");
+		}
+		else {
+			p.setChecked("checked");
+		}
+		
+		return p;
+	}
+	
+	@Override
 	public List<Integer> getAllProductUPCsInCart(int cart_ID) {
 		
 		String getAllRecipes = "SELECT upc FROM cart_products WHERE cart_ID = ?";
 		
-		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipes);
+		SqlRowSet result = jdbcTemplate.queryForRowSet(getAllRecipes, cart_ID);
 		
 		List<Integer> upcList = new ArrayList<Integer>();
 		
 		while (result.next()) {
-			upcList.add(result.getInt("cart_ID"));
+			upcList.add(result.getInt("upc"));
 		}
 		
 		return upcList;
