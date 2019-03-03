@@ -48,7 +48,7 @@ public class SiteController {
 									@RequestParam String cooktime,
 									ModelMap modelHolder,
 									HttpServletRequest request) {
-		currentRecipes = recipeDao.getRecipeThatMeetSearch(Double.parseDouble(budget), category, Integer.parseInt(cooktime), Integer.parseInt(servings));
+		currentRecipes = recipeDao.getRecipeThatMeetSearch(Double.parseDouble(budget), 1, category, Integer.parseInt(cooktime), Integer.parseInt(servings));
 		modelHolder.put("servings", servings);
 		modelHolder.put("recipes", currentRecipes);
 		return "recipeList";

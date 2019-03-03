@@ -199,7 +199,7 @@ public class RecipeJDBCDao implements RecipeDao {
 		SqlRowSet result = jdbcTemplate.queryForRowSet(getPriceOfProd, upc);
 		
 		if (result.next()) {
-			return result.getInt("product_price");
+			return result.getDouble("product_price");
 		}
 		return 0;
 	}
