@@ -42,6 +42,7 @@ h1 {
 	color: white;
 	margin: 10px;
 	font-size: 10px;
+	color: #3A3A3A;
 }
 
 p {
@@ -62,11 +63,13 @@ p {
 	background-color: rgba(204, 204, 204, 0.77);
 	padding: 10px;
 	border-radius: 10px;
-	margin-bottom: 10px;
+	margin: auto;
+	margin-top: 20px;
 	color: #3A3A3A;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+	width: 70%;
 	
 }
 
@@ -122,6 +125,17 @@ table {
 
 #group {
 	color: black;
+}
+
+#ourProject {
+	width: 70%;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+#longTermVision {
+	width: 70%;
+	margin: auto;
 }
 
 

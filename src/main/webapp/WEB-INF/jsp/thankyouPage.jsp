@@ -17,17 +17,15 @@ color: #3A3A3A;
 <body>
 	<c:url value="/aboutUs" var="aboutusLink" />
 	
-	<h1> Thank you RevolutionUC !</h1>
+	<h1> Thank you RevolutionUC!</h1>
 	
-	<p>Thank you for all the free food and so many opportunities to learn.</p>
+	<p>We appreciate all of the hospitality and the many opportunities to learn.</p>
 	
-	<p>If you have any question for us feel free to ask!</p>
+	<p>Every organizer and mentor was very willing to offer support in any way and constructive feedback.</p>
 	
-	<p>Also, if you would like to learn more about us we have provided links to our LinkedIn pages.</p>
+	<p>If you have any questions for us feel free to ask!</p>
 	
-	<p>Just go to our <a href="${aboutusLink}">About Us</a> page and click on any of our pictures and you will be redirected to our pages.</p>
-	
-	<p>Once again, please feel free to ask us questions. And thank you for a great time and wonderful experience!!</p>
+	<h1>Thank you for a great time and wonderful experience!</h1>
 
 </body>
 </html>
