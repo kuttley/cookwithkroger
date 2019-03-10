@@ -1,5 +1,6 @@
 # CookWithKroger
 RevolutionUC devpost -> https://devpost.com/software/cookwithkroger
+![CookWithKroger homepage](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/776/364/datas/gallery.jpg)
 
 # Inspiration
 The inspiration behind cook with Kroger was to try to make an interactive and dynamic webpage that can help simplify the shopping experience for any Kroger customer.
